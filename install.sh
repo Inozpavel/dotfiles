@@ -1,40 +1,35 @@
 #!/bin/zsh
 
-ALIASES=(
-"ll=\"ls -al\""
-"grep=\"grep --color=\"auto\"\""
-"cls=\"clear\""
-)
-
 PACKAGES=(
 "btop"
-#"nano"
+"zsh"
+"bat"
+"lsd"
+"curl"
+"wget"
+"git"
 )
 
-TERMINAL_FILE="$HOME/.zshrc"
-
 main() {
-  echo "Installation starting"
+  ensure_in_sudo
 
-  add_aliases
-  echo
+  echo "Installation starting..."
+
   update_sources_and_installed_packages
   echo
   add_packages
+  echo
+  install_oh_my_zsh
+  echo
 
   echo "Installation success"
 }
 
-add_aliases() {
-  for als in "${ALIASES[@]}"; do
-    local _line="alias ${als}"
-    if ! grep -q "$_line" "$TERMINAL_FILE"
-    then
-      echo "Adding alias ${als}"
-      echo "Line $_line"
-      echo "$_line" >> "$TERMINAL_FILE"
+ensure_in_sudo() {
+    if [[ $UID != 0 ]]; then
+        echo "Please run this script with sudo"
+        exit 1
     fi
-  done
 }
 
 update_sources_and_installed_packages() {
@@ -44,16 +39,20 @@ update_sources_and_installed_packages() {
 }
 
 add_packages() {
-    local _packages_line
+  echo "Installing required packages..."
+  for package in "${PACKAGES[@]}"; do
+    yes | sudo pacman -S "${package}"
+  done
+   echo "Installing required packages completed"
+}
 
-    echo "Installing required packages..."
-    _packages_line=$(printf " %s" "${PACKAGES[@]}")
-    echo "$_packages_line"
+install_oh_my_zsh(){
+  сp "$(dirname $"0")"/.zshrc "$HOME/.zshrc"
+  sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+  git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
 
-#    yes | sudo pacman -S "${_packages_line}"
-    sudo pacman -S "${_packages_line}"
-
-    echo "Installing required packages completed"
+  chsh -s "$(which zsh)"
 }
 
 
