@@ -11,8 +11,6 @@ PACKAGES=(
 )
 
 main() {
-  ensure_in_sudo
-
   echo "Installation starting..."
 
   update_sources_and_installed_packages
@@ -23,13 +21,6 @@ main() {
   echo
 
   echo "Installation success"
-}
-
-ensure_in_sudo() {
-    if [[ $UID != 0 ]]; then
-        echo "Please run this script with sudo"
-        exit 1
-    fi
 }
 
 update_sources_and_installed_packages() {
