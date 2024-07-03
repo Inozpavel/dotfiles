@@ -103,7 +103,18 @@ SAVEHIST=2000
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sudo web-search history jsontools gitfast colored-man-pages jump zsh-autosuggestions)
+plugins=(
+git
+sudo
+web-search
+history
+jsontools
+gitfast
+colored-man-pages
+jump
+zsh-autosuggestions
+rust
+dotnet)
 
 source $ZSH/oh-my-zsh.sh
 

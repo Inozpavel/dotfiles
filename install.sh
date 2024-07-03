@@ -50,7 +50,7 @@ update_sources_and_installed_packages() {
 add_packages() {
   echo "Installing required packages..."
   for package in "${PACKAGES[@]}"; do
-    yes | sudo pacman -S "${package}"
+    yes | sudo pacman -S --needed "${package}"
   done
    echo "Installing required packages completed"
 }
