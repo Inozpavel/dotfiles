@@ -11,18 +11,18 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 # Options section
-setopt autocd                   # change directory by typing its name + enter
-setopt nobeep
-setopt appendhistory
-setopt correct
-setopt histignorealldups
-setopt inc_apprent_history
+setopt autocd                   # Change directory by typing its name + enter
+setopt nobeep                   # No beep
+setopt appendhistory            # Immediately append history instead if overwriting
+setopt correct                  # Auto correct mistakes
+setopt histignorealldups        # If a new command is duplicate, remove the older one
+setopt inc_append_history       # Save commands are added to the history immediately, otherwise only when shell exits
 setopt extendedglob
-setopt nocaseglobr
+setopt nocaseglob
 setopt rcexpandparam
 setopt numericglobsort          # sort files numerically when it makes sense
-setops interactivecomments      # allow comments in interactive mode
-setops notify                   # report the status if background jobs immediately
+setopt interactivecomments      # allow comments in interactive mode
+setopt notify                   # report the status if background jobs immediately
 
 
 WORDCHARS=${WORDCHARS//\/}
