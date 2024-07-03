@@ -56,12 +56,18 @@ add_packages() {
 }
 
 install_oh_my_zsh(){
-  echo "Directory: $(dirname "$0")/.zshrc"
-  echo "$HOME"
+  local USER_HOME
+  local ZSH_CUSTOM
   yes | sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-  cp "$(dirname "$0")"/.zshrc "$HOME/.zshrc"
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
-  git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+
+  USER_HOME=$(eval echo ~"${SUDO_USER}")
+
+  cp "$(dirname "$0")"/.zshrc "$USER_HOME/.zshrc"
+
+  # plugins
+  ZSH_CUSTOM="${USER_HOME}/.oh-my-zsh/custom"
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting"
+  git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM}/plugins/zsh-autosuggestions"
 
   chsh -s "$(which zsh)" "${SUDO_USER:-"$USER"}"
 }
