@@ -11,7 +11,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 # Options section
-setopt autocd
+setopt autocd                   # change directory by typing its name + enter
 setopt nobeep
 setopt appendhistory
 setopt correct
@@ -20,17 +20,29 @@ setopt inc_apprent_history
 setopt extendedglob
 setopt nocaseglobr
 setopt rcexpandparam
-setopt numericglobsort
+setopt numericglobsort          # sort files numerically when it makes sense
+setops interactivecomments      # allow comments in interactive mode
+setops notify                   # report the status if background jobs immediately
 
+
+WORDCHARS=${WORDCHARS//\/}
 # Theming section
 autoload -U compinit colors zcalc
 compinit -d
 colors
 
 DEFAULT_USER=$USER
-HISTFILE=~/.histfile
+
+# configure key bindings
+bindkey '^]]3~' delete-char
+bindkey '^[[H' beginning-of-line # home
+bindkey '^[[F' beginning-of-line # end
+
+# history configuration
+HISTFILE=~/.zsh_history
 HISTSIZE=1000
-SAVEHIST=1000
+SAVEHIST=2000
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -121,7 +133,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ll="ls -al"
-alias grep="grep --color="auto""
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias diff="diff color=auto"
 alias cls="clear"
 alias ls="lsd"
 alias less="bat"

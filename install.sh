@@ -8,7 +8,25 @@ PACKAGES=(
 "curl"
 "wget"
 "git"
+"neofetch"
 )
+
+#GNOME_PACKAGES=(
+#"gdm"
+#"gnome"
+#)
+
+# Gnome extensions
+# arcmenu
+# vitals
+# blur my shell
+# clipboard indicator
+# pano
+# space bar
+# tweaks and extensions in system menu
+# dash to dock
+# desktop cube
+# logo menu
 
 main() {
   echo "Installation starting..."
