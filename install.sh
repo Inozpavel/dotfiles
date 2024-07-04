@@ -63,7 +63,12 @@ install_oh_my_zsh(){
   export ZSH_CUSTOM="${ZSH}/custom"
   yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
+
   cp "$(dirname "$0")"/.zshrc "$USER_HOME/.zshrc"
+  LSD_CONFIG_DIRECTORY="$USER_HOME/.config/lsd"
+  mkdir -p "${LSD_CONFIG_DIRECTORY}"
+  cp "$(dirname "$0")"/lsd_config.yaml "${LSD_CONFIG_DIRECTORY}/config.yaml"
 
   # plugins
 
