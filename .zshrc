@@ -1,3 +1,6 @@
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Settings
+# https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -9,20 +12,20 @@ export ZSH="$HOME/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
+# ZSH_THEME="heapbytes"
 
 # Options section
 setopt autocd                   # Change directory by typing its name + enter
 setopt nobeep                   # No beep
 setopt appendhistory            # Immediately append history instead if overwriting
 setopt correct                  # Auto correct mistakes
-setopt histignorealldups        # If a new command is duplicate, remove the older one
-setopt inc_append_history       # Save commands are added to the history immediately, otherwise only when shell exits
-setopt extendedglob
-setopt nocaseglob
-setopt rcexpandparam
-setopt numericglobsort          # sort files numerically when it makes sense
-setopt interactivecomments      # allow comments in interactive mode
-setopt notify                   # report the status if background jobs immediately
+# setopt inc_append_history       # Save commands are added to the history immediately, otherwise only when shell exits
+# setopt extendedglob
+# setopt nocaseglob
+# setopt rcexpandparam
+setopt numericglobsort          # Sort files numerically when it makes sense
+setopt interactivecomments      # Allow comments in interactive mode
+setopt notify                   # Report the status if background jobs immediately
 
 
 WORDCHARS=${WORDCHARS//\/}
@@ -42,6 +45,10 @@ bindkey '^[[F' beginning-of-line # end
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=2000
+
+setopt hist_expire_dups_first    # Delete duplicates first when HISTFILE size exceeds
+setopt hist_ignore_dups          # If a new command is duplicate, remove the older one
+setopt hist_ignore_space         # Ignore commands that start with space
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
