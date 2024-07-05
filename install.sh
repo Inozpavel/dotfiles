@@ -9,6 +9,7 @@ PACKAGES=(
 "wget"
 "git"
 "neofetch"
+"wezterm"
 )
 
 #GNOME_PACKAGES=(
@@ -37,6 +38,8 @@ main() {
   echo
   install_oh_my_zsh
   echo
+  install_wezterm
+  echo
 
   echo "Installation success"
 }
@@ -55,9 +58,7 @@ add_packages() {
    echo "Installing required packages completed"
 }
 
-install_oh_my_zsh(){
-  local USER_HOME
-
+install_oh_my_zsh() {
   USER_HOME=$(eval echo ~"${SUDO_USER}")
   export ZSH="${USER_HOME}/.oh-my-zsh"
   export ZSH_CUSTOM="${ZSH}/custom"
@@ -65,10 +66,10 @@ install_oh_my_zsh(){
 
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
 
-  cp "$(dirname "$0")"/.zshrc "$USER_HOME/.zshrc"
+  cp "$(dirname "$0")/.zshrc" "$USER_HOME/.zshrc"
   LSD_CONFIG_DIRECTORY="$USER_HOME/.config/lsd"
   mkdir -p "${LSD_CONFIG_DIRECTORY}"
-  cp "$(dirname "$0")"/lsd_config.yaml "${LSD_CONFIG_DIRECTORY}/config.yaml"
+  cp "$(dirname "$0")/lsd_config.yaml" "${LSD_CONFIG_DIRECTORY}/config.yaml"
 
   # plugins
 
@@ -77,6 +78,11 @@ install_oh_my_zsh(){
 
   chsh -s "$(which zsh)" "${SUDO_USER:-"$USER"}"
   zsh
+}
+
+install_wezterm() {
+    USER_HOME=$(eval echo ~"${SUDO_USER}")
+    cp "$(dirname "$0")/.wezterm.lua" "${USER_HOME}/.wezterm.lua"
 }
 
 
