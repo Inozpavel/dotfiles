@@ -10,11 +10,14 @@ PACKAGES=(
 "git"
 "neofetch"
 "wezterm"
+"bluez"
+"bluez-tools"
 )
 
 #GNOME_PACKAGES=(
 #"gdm"
 #"gnome"
+#"gnome-bluetooth-3.0"
 #)
 
 # Gnome extensions
@@ -39,6 +42,8 @@ main() {
   install_oh_my_zsh
   echo
   install_wezterm
+  echo
+  install_rust
   echo
 
   echo "Installation success"
@@ -81,8 +86,32 @@ install_oh_my_zsh() {
 }
 
 install_wezterm() {
+    echo "Configuring wezterm..."
     USER_HOME=$(eval echo ~"${SUDO_USER}")
+
     cp "$(dirname "$0")/.wezterm.lua" "${USER_HOME}/.wezterm.lua"
+    echo "Wezterm configuration completed"
+}
+
+install_rust() {
+
+  if ! command -v "cargo" >/dev/null; then
+    echo "Installing rust.."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    echo "Rust install completed"
+  else
+    echo "Rust is already installed. Skipping..."
+  fi
+
+}
+
+check_command_exists() {
+  if ! [[ $# -eq 1 ]]; then
+    >&2 echo "Internal script error: expected 1 arg in check_command_exists"
+    exit 1
+  fi
+  command -v $1 >/dev/null
+  return $?
 }
 
 
