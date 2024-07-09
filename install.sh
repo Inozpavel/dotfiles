@@ -79,7 +79,8 @@ install_oh_my_zsh() {
   # plugins
 
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting"
-  git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM}/plugins/zsh-autosuggestions"
+  git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM}/plugins/zsh-autosuggestions" 
+  git clone https://github.com/zpm-zsh/clipboard.git "${ZSH_CUSTOM}/plugins/clipboard" 
 
   chsh -s "$(which zsh)" "${SUDO_USER:-"$USER"}"
   zsh
