@@ -121,7 +121,9 @@ colored-man-pages
 jump
 zsh-autosuggestions
 rust
-dotnet)
+dotnet
+clipboard
+)
 
 source $ZSH/oh-my-zsh.sh
 
