@@ -103,6 +103,10 @@ jsontools
 colored-man-pages
 )
 
+libraries=(
+git
+async_prompt)
+
 custom_plugins=(
 zsh-users/zsh-syntax-highlighting  # https://github.com/zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions      # https://github.com/zsh-users/zsh-autosuggestions
@@ -124,11 +128,22 @@ for custom_plugin in $custom_plugins[@]; do
 done
 
 for plugin in $plugins[@]; do
-  zinit snippet OMZP::${plugin}
+    zinit snippet OMZP::${plugin}
 done
 
-zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-zinit light sindresorhus/pure
+for library in $libraries[@]; do
+    zinit snippet OMZL::${library}.zsh
+done
+
+zi cdclear -q # <- forget completions provided up to this moment
+setopt promptsubst
+
+# Theme 1
+# zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+# zinit light sindresorhus/pure
+
+# Theme 2
+zinit snippet OMZT::$ZSH_THEME
 
 # User configuration
 
