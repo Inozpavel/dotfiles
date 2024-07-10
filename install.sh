@@ -3,8 +3,6 @@
 PACKAGES=(
 "btop"
 "zsh"
-"bat"
-"lsd"
 "curl"
 "wget"
 "git"
@@ -12,7 +10,19 @@ PACKAGES=(
 "wezterm"
 "bluez"
 "bluez-tools"
+"stow"
 )
+
+DEV_PACKAGES=(
+"rust"
+"bat"
+"lsd"
+"ripgrep"
+"fd"
+"zoxide"       # https://github.com/ajeetdsouza/zoxide
+)
+
+#$RUST_TOOLS
 
 #GNOME_PACKAGES=(
 #"gdm"
@@ -32,20 +42,26 @@ PACKAGES=(
 # desktop cube
 # logo menu
 
+USER_HOME=$(eval echo ~"${SUDO_USER}")
+
 main() {
   echo "Installation starting..."
 
-  update_sources_and_installed_packages
+#  update_sources_and_installed_packages
+#  echo
+#  install_packages
+#  echo
+#  install_dev_packages
+#  echo
+#  install_oh_my_zsh
   echo
-  add_packages
+#  install_wezterm
   echo
-  install_oh_my_zsh
+#  install_rust
   echo
-  install_wezterm
+#  install_rust_tools
   echo
-  install_rust
-  echo
-
+  set_configs
   echo "Installation success"
 }
 
@@ -55,7 +71,7 @@ update_sources_and_installed_packages() {
   echo "Package update complete"
 }
 
-add_packages() {
+install_packages() {
   echo "Installing required packages..."
   for package in "${PACKAGES[@]}"; do
     yes | sudo pacman -S --needed "${package}"
@@ -63,24 +79,35 @@ add_packages() {
    echo "Installing required packages completed"
 }
 
+install_dev_packages() {
+  echo "Installing dev packages..."
+  for package in "${DEV_PACKAGES[@]}"; do
+    yes | sudo pacman -S --needed "${package}"
+  done
+   echo "Installing dev packages completed"
+}
+
+set_configs() {
+    stow --ignore='.idea|install\.sh' $(dirname "$0")
+}
+
 install_oh_my_zsh() {
-  USER_HOME=$(eval echo ~"${SUDO_USER}")
   export ZSH="${USER_HOME}/.oh-my-zsh"
   export ZSH_CUSTOM="${ZSH}/custom"
   yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
 
-  cp "$(dirname "$0")/.zshrc" "$USER_HOME/.zshrc"
+  #cp "$(dirname "$0")/.zshrc" "$USER_HOME/.zshrc"
   LSD_CONFIG_DIRECTORY="$USER_HOME/.config/lsd"
   mkdir -p "${LSD_CONFIG_DIRECTORY}"
-  cp "$(dirname "$0")/lsd_config.yaml" "${LSD_CONFIG_DIRECTORY}/config.yaml"
+  #cp "$(dirname "$0")/lsd_config.yaml" "${LSD_CONFIG_DIRECTORY}/config.yaml"
 
   # plugins
 
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting"
-  git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM}/plugins/zsh-autosuggestions" 
-  git clone https://github.com/zpm-zsh/clipboard.git "${ZSH_CUSTOM}/plugins/clipboard" 
+  git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM}/plugins/zsh-autosuggestions"
+  git clone https://github.com/zpm-zsh/clipboard.git "${ZSH_CUSTOM}/plugins/clipboard"  # https://github.com/zpm-zsh/clipboard
 
   chsh -s "$(which zsh)" "${SUDO_USER:-"$USER"}"
   zsh
@@ -88,8 +115,6 @@ install_oh_my_zsh() {
 
 install_wezterm() {
     echo "Configuring wezterm..."
-    USER_HOME=$(eval echo ~"${SUDO_USER}")
-
     cp "$(dirname "$0")/.wezterm.lua" "${USER_HOME}/.wezterm.lua"
     echo "Wezterm configuration completed"
 }
@@ -106,6 +131,12 @@ install_rust() {
 
 }
 
+install_rust_tools() {
+  if ! command -v "cargo" >/dev/null; then
+    cargo install $RUST_TOOLS[@]
+  fi;
+}
+
 check_command_exists() {
   if ! [[ $# -eq 1 ]]; then
     >&2 echo "Internal script error: expected 1 arg in check_command_exists"
@@ -115,6 +146,13 @@ check_command_exists() {
   return $?
 }
 
+install_zinit() {
+  ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+  [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+  [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+  source "${ZINIT_HOME}/zinit.zsh"
+
+}
 
 main "$@"|| exit 1
 
