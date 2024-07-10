@@ -125,10 +125,17 @@ dotnet
 clipboard
 )
 
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}}/.config/zinit"
+if [ ! -d $ZINIT_HOME ]; then
+  echo "zinit is missing. Installing..."
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
 source "${ZINIT_HOME}/zinit.zsh"
+
+zinit light zsh-users/zsh-syntax-highlighting  # https://github.com/zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-autosuggestions      # https://github.com/zsh-users/zsh-autosuggestions
+zinit light zpm-zsh/clipboard                  # https://github.com/zpm-zsh/clipboard
 
 # source $ZSH/oh-my-zsh.sh
 

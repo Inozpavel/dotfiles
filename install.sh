@@ -11,6 +11,7 @@ PACKAGES=(
 "bluez"
 "bluez-tools"
 "stow"
+"ttf-jetbrains-mono-nerd"
 )
 
 DEV_PACKAGES=(
@@ -88,26 +89,26 @@ install_dev_packages() {
 }
 
 set_configs() {
-    stow --ignore='.idea|install\.sh' $(dirname "$0")
+  sh -c 'cd dotfiles && sudo stow --adopt ignore=".idea|install\.sh" -vRt ~ .'
 }
 
-install_oh_my_zsh() {
-  export ZSH="${USER_HOME}/.oh-my-zsh"
-  export ZSH_CUSTOM="${ZSH}/custom"
-  yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+change_shell_to_zsh() {
+#  export ZSH="${USER_HOME}/.oh-my-zsh"
+#  export ZSH_CUSTOM="${ZSH}/custom"
+#  yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
+#  sh -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
 
   #cp "$(dirname "$0")/.zshrc" "$USER_HOME/.zshrc"
-  LSD_CONFIG_DIRECTORY="$USER_HOME/.config/lsd"
-  mkdir -p "${LSD_CONFIG_DIRECTORY}"
+#  LSD_CONFIG_DIRECTORY="$USER_HOME/.config/lsd"
+#  mkdir -p "${LSD_CONFIG_DIRECTORY}"
   #cp "$(dirname "$0")/lsd_config.yaml" "${LSD_CONFIG_DIRECTORY}/config.yaml"
 
   # plugins
 
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting"
-  git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM}/plugins/zsh-autosuggestions"
-  git clone https://github.com/zpm-zsh/clipboard.git "${ZSH_CUSTOM}/plugins/clipboard"  # https://github.com/zpm-zsh/clipboard
+#  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting"
+#  git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM}/plugins/zsh-autosuggestions"
+#  git clone https://github.com/zpm-zsh/clipboard.git "${ZSH_CUSTOM}/plugins/clipboard"  # https://github.com/zpm-zsh/clipboard
 
   chsh -s "$(which zsh)" "${SUDO_USER:-"$USER"}"
   zsh
@@ -147,11 +148,6 @@ check_command_exists() {
 }
 
 install_zinit() {
-  ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-  [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-  [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-  source "${ZINIT_HOME}/zinit.zsh"
-
 }
 
 main "$@"|| exit 1
