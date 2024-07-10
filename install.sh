@@ -1,26 +1,26 @@
 #!/bin/zsh
 
 PACKAGES=(
-"btop"
-"zsh"
-"curl"
-"wget"
-"git"
-"neofetch"
-"wezterm"
-"bluez"
-"bluez-tools"
-"stow"
-"ttf-jetbrains-mono-nerd"
+btop
+zsh
+curl
+wget
+git
+neofetch
+wezterm
+bluez
+bluez-tools
+stow
+ttf-jetbrains-mono-nerd
 )
 
 DEV_PACKAGES=(
-"rust"
-"bat"
-"lsd"
-"ripgrep"
-"fd"
-"zoxide"       # https://github.com/ajeetdsouza/zoxide
+rust
+bat
+lsd
+ripgrep
+fd
+zoxide       # https://github.com/ajeetdsouza/zoxide
 )
 
 #$RUST_TOOLS
@@ -48,21 +48,19 @@ USER_HOME=$(eval echo ~"${SUDO_USER}")
 main() {
   echo "Installation starting..."
 
-#  update_sources_and_installed_packages
-#  echo
-#  install_packages
-#  echo
-#  install_dev_packages
-#  echo
-#  install_oh_my_zsh
+  update_sources_and_installed_packages
   echo
-#  install_wezterm
+  install_packages
   echo
-#  install_rust
+  install_dev_packages
   echo
-#  install_rust_tools
+  change_shell_to_zsh
   echo
-  set_configs
+  install_wezterm
+  echo
+  install_rust
+  echo
+  link_configs
   echo "Installation success"
 }
 
@@ -88,28 +86,11 @@ install_dev_packages() {
    echo "Installing dev packages completed"
 }
 
-set_configs() {
+link_configs() {
   sh -c 'cd dotfiles && sudo stow --adopt ignore=".idea|install\.sh" -vRt ~ .'
 }
 
 change_shell_to_zsh() {
-#  export ZSH="${USER_HOME}/.oh-my-zsh"
-#  export ZSH_CUSTOM="${ZSH}/custom"
-#  yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-#  sh -c "$(curl -fsSL https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/install_manual.sh)"
-
-  #cp "$(dirname "$0")/.zshrc" "$USER_HOME/.zshrc"
-#  LSD_CONFIG_DIRECTORY="$USER_HOME/.config/lsd"
-#  mkdir -p "${LSD_CONFIG_DIRECTORY}"
-  #cp "$(dirname "$0")/lsd_config.yaml" "${LSD_CONFIG_DIRECTORY}/config.yaml"
-
-  # plugins
-
-#  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting"
-#  git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM}/plugins/zsh-autosuggestions"
-#  git clone https://github.com/zpm-zsh/clipboard.git "${ZSH_CUSTOM}/plugins/clipboard"  # https://github.com/zpm-zsh/clipboard
-
   chsh -s "$(which zsh)" "${SUDO_USER:-"$USER"}"
   zsh
 }
@@ -121,7 +102,6 @@ install_wezterm() {
 }
 
 install_rust() {
-
   if ! command -v "cargo" >/dev/null; then
     echo "Installing rust.."
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -132,12 +112,6 @@ install_rust() {
 
 }
 
-install_rust_tools() {
-  if ! command -v "cargo" >/dev/null; then
-    cargo install $RUST_TOOLS[@]
-  fi;
-}
-
 check_command_exists() {
   if ! [[ $# -eq 1 ]]; then
     >&2 echo "Internal script error: expected 1 arg in check_command_exists"
@@ -145,9 +119,6 @@ check_command_exists() {
   fi
   command -v $1 >/dev/null
   return $?
-}
-
-install_zinit() {
 }
 
 main "$@"|| exit 1

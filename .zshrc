@@ -6,7 +6,6 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -15,23 +14,22 @@ ZSH_THEME="robbyrussell"
 # ZSH_THEME="heapbytes"
 
 # Options section
-setopt autocd                   # Change directory by typing its name + enter
-setopt nobeep                   # No beep
-setopt appendhistory            # Immediately append history instead if overwriting
+setopt auto_cd                   # Change directory by typing its name + enter
+setopt no_beep                   # No beep
+setopt append_history            # Immediately append history instead if overwriting
 setopt correct                  # Auto correct mistakes
 # setopt inc_append_history       # Save commands are added to the history immediately, otherwise only when shell exits
 # setopt extendedglob
 # setopt nocaseglob
 # setopt rcexpandparam
-setopt numericglobsort          # Sort files numerically when it makes sense
-setopt interactivecomments      # Allow comments in interactive mode
+setopt numeric_glob_sort          # Sort files numerically when it makes sense
+setopt interactive_comments      # Allow comments in interactive mode
 setopt notify                   # Report the status if background jobs immediately
-
 
 WORDCHARS=${WORDCHARS//\/}
 # Theming section
 autoload -U compinit colors zcalc
-compinit -d
+compinit
 colors
 
 DEFAULT_USER=$USER
@@ -49,27 +47,13 @@ SAVEHIST=2000
 setopt hist_expire_dups_first    # Delete duplicates first when HISTFILE size exceeds
 setopt hist_ignore_dups          # If a new command is duplicate, remove the older one
 setopt hist_ignore_space         # Ignore commands that start with space
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+setopt share_history
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -116,28 +100,35 @@ sudo
 web-search
 history
 jsontools
-gitfast
 colored-man-pages
-jump
-zsh-autosuggestions
-rust
-dotnet
-clipboard
 )
 
+custom_plugins=(
+zsh-users/zsh-syntax-highlighting  # https://github.com/zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-autosuggestions      # https://github.com/zsh-users/zsh-autosuggestions
+zpm-zsh/clipboard                  # https://github.com/zpm-zsh/clipboard
+)
+
+# https://github.com/zdharma-continuum/zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}}/.config/zinit"
 if [ ! -d $ZINIT_HOME ]; then
-  echo "zinit is missing. Installing..."
+  echo "Missing zinit, installing..."
   mkdir -p "$(dirname $ZINIT_HOME)"
-  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+  git clone https://github.com/zdharma-continuum/zinit "$ZINIT_HOME"
 fi
+
 source "${ZINIT_HOME}/zinit.zsh"
 
-zinit light zsh-users/zsh-syntax-highlighting  # https://github.com/zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions      # https://github.com/zsh-users/zsh-autosuggestions
-zinit light zpm-zsh/clipboard                  # https://github.com/zpm-zsh/clipboard
+for custom_plugin in $custom_plugins[@]; do
+    zinit light $custom_plugin
+done
 
-# source $ZSH/oh-my-zsh.sh
+for plugin in $plugins[@]; do
+  zinit snippet OMZP::${plugin}
+done
+
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+zinit light sindresorhus/pure
 
 # User configuration
 
@@ -156,14 +147,7 @@ zinit light zpm-zsh/clipboard                  # https://github.com/zpm-zsh/clip
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# Aliases
 alias ll="ls -al"
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
@@ -171,3 +155,18 @@ alias diff="diff color=auto"
 alias cls="clear"
 alias ls="lsd"
 alias less="bat"
+
+# init_plugins_with_oh_my_zsh() {
+#     export ZSH="${USER_HOME}/.oh-my-zsh"
+#     export ZSH_CUSTOM="${ZSH}/custom"
+#     yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#
+#     for custom_plugin in $custom_plugins[@]; do
+#         directory="${ZSH_CUSTOM}/plugins/{custom_plugin}"
+#         if [ ! -d $directory ]; then
+#             git clone "https://github.com/${custom_plugin}" $directory
+#         fi
+#     done
+#
+#     source $ZSH/oh-my-zsh.sh
+# }
