@@ -19,7 +19,7 @@ setopt auto_push_d               #
 setopt push_d_ignore_dups        #
 setopt no_beep                   # No beep
 setopt append_history            # Immediately append history instead if overwriting
-setopt correc                    # Auto correct mistakes
+setopt correct                   # Auto correct mistakes
 # setopt inc_append_history       # Save commands are added to the history immediately, otherwise only when shell exits
 # setopt extendedglob
 # setopt nocaseglob
@@ -28,8 +28,7 @@ setopt numeric_glob_sort         # Sort files numerically when it makes sense
 setopt interactive_comments      # Allow comments in interactive mode
 setopt notify                    # Report the status if background jobs immediately
 
-# configure key bindings
-# bindkey -e
+# Configure key bindings
 bindkey '^[[3~' delete-char              # delete
 bindkey '^[[H' beginning-of-line         # home
 bindkey '^[[F' end-of-line               # end
@@ -39,16 +38,8 @@ bindkey '^n' history-search-backward     # ctrl + n
 bindkey '^[[1;3D' 'backward-word'        # left alt + left arrow
 bindkey '^[[1;3C' 'forward-word'         # right alt + right arrow
 
-# configure key bindings
-# bindkey -e
-bindkey '^[[3~' delete-char      # delete
-bindkey '^[[H' beginning-of-line # home
-bindkey '^[[F' end-of-line       # end
-bindkey '^L' clear-screen        # ctrl + l
-bindkey '^p' history-search-forward    # ctrl + l
-bindkey '^n' history-search-backward      # ctrl + l
-
 WORDCHARS=${WORDCHARS//\/}
+
 # Theming section
 autoload -U compinit colors zcalc
 compinit
@@ -188,18 +179,3 @@ alias cls="clear"
 alias ls="lsd"
 alias less="bat"
 alias d="dirs -v"
-
-# init_plugins_with_oh_my_zsh() {
-#     export ZSH="${USER_HOME}/.oh-my-zsh"
-#     export ZSH_CUSTOM="${ZSH}/custom"
-#     yes | sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-#
-#     for custom_plugin in $custom_plugins[@]; do
-#         directory="${ZSH_CUSTOM}/plugins/{custom_plugin}"
-#         if [ ! -d $directory ]; then
-#             git clone "https://github.com/${custom_plugin}" $directory
-#         fi
-#     done
-#
-#     source $ZSH/oh-my-zsh.sh
-# }
