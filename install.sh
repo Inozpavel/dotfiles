@@ -20,6 +20,7 @@ bat
 lsd
 ripgrep
 fd
+fzf
 zoxide       # https://github.com/ajeetdsouza/zoxide
 )
 
@@ -32,16 +33,24 @@ zoxide       # https://github.com/ajeetdsouza/zoxide
 #)
 
 # Gnome extensions
-# arcmenu
-# vitals
-# blur my shell
-# clipboard indicator
-# pano
-# space bar
-# tweaks and extensions in system menu
-# dash to dock
-# desktop cube
-# logo menu
+# App indicator and LStatusNotifierItem Support
+# ArcMenu
+# Blur my shell
+# Caffeine
+# Clipboard indicator / Pano
+# Compiz alike magic lamp effect
+# Compiz windows effect
+# Dash to Dock
+# Desktop Cube
+# Fly-Pie
+# Hide Universal Access
+# Impatience
+# Logo menu
+# Quick Setting Tweaker
+# Space bar
+# Tweaks & extensions in system menu
+# Vitals
+
 
 USER_HOME=$(eval echo ~"${SUDO_USER}")
 
@@ -61,6 +70,7 @@ main() {
   install_rust
   echo
   link_configs
+
   echo "Installation success"
 }
 

@@ -26,6 +26,15 @@ setopt numeric_glob_sort          # Sort files numerically when it makes sense
 setopt interactive_comments      # Allow comments in interactive mode
 setopt notify                   # Report the status if background jobs immediately
 
+# configure key bindings
+# bindkey -e
+bindkey '^[[3~' delete-char      # delete
+bindkey '^[[H' beginning-of-line # home
+bindkey '^[[F' end-of-line       # end
+bindkey '^L' clear-screen        # ctrl + l
+bindkey '^p' history-search-forward    # ctrl + l
+bindkey '^n' history-search-backward      # ctrl + l
+
 WORDCHARS=${WORDCHARS//\/}
 # Theming section
 autoload -U compinit colors zcalc
@@ -34,18 +43,13 @@ colors
 
 DEFAULT_USER=$USER
 
-# configure key bindings
-bindkey '^]]3~' delete-char
-bindkey '^[[H' beginning-of-line # home
-bindkey '^[[F' beginning-of-line # end
-
 # history configuration
 HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=2000
+HISTSIZE=5000
+SAVEHIST=$HISTSIZE
 
-setopt hist_expire_dups_first    # Delete duplicates first when HISTFILE size exceeds
-setopt hist_ignore_dups          # If a new command is duplicate, remove the older one
+# setopt hist_expire_dups_first    # Delete duplicates first when HISTFILE size exceeds
+setopt hist_save_no_dups
 setopt hist_ignore_space         # Ignore commands that start with space
 setopt share_history
 
