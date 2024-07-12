@@ -12,6 +12,7 @@ bluez
 bluez-tools
 stow
 ttf-jetbrains-mono-nerd
+ttf-fira-code
 )
 
 DEV_PACKAGES=(
