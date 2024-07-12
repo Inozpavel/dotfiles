@@ -137,3 +137,5 @@ alias cls="clear"
 alias ls="lsd"
 alias less="bat"
 alias d="dirs -v"
+
+eval "$(starship init zsh)"
