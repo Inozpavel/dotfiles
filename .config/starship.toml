@@ -1,16 +1,22 @@
-#format = '$all$cmd_duration'
+"$schema" = 'https://starship.rs/config-schema.json'
 
-continuation_prompt = '▶▶ '
+right_format = "$time"
 
 [character]
 success_symbol = '[➜](bold green)'
 error_symbol = '[✗](bold red)'
 
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
 [cmd_duration]
 show_milliseconds = true
 show_notifications = true
-min_time_to_notify = 2000
-
+min_time_to_notify = 45000
+min_time = 2000
 
 [os]
 disabled = false
@@ -19,106 +25,10 @@ style = "bg:color_orange fg:color_fg0"
 
 [time]
 disabled = false
-time_format = "%R"
+time_format = "%T"
 style = "bg:color_bg1"
 format = '[[  $time ](fg:color_fg0 bg:color_bg1)]($style)'
 
-#show_notifications = true
-# Which is equivalent to
-#format = """
-#$username\
-#$hostname\
-#$localip\
-#$shlvl\
-#$singularity\
-#$kubernetes\
-#$directory\
-#$vcsh\
-#$fossil_branch\
-#$fossil_metrics\
-#$git_branch\
-#$git_commit\
-#$git_state\
-#$git_metrics\
-#$git_status\
-#$hg_branch\
-#$pijul_channel\
-#$docker_context\
-#$package\
-#$c\
-#$cmake\
-#$cobol\
-#$daml\
-#$dart\
-#$deno\
-#$dotnet\
-#$elixir\
-#$elm\
-#$erlang\
-#$fennel\
-#$gleam\
-#$golang\
-#$guix_shell\
-#$haskell\
-#$haxe\
-#$helm\
-#$java\
-#$julia\
-#$kotlin\
-#$gradle\
-#$lua\
-#$nim\
-#$nodejs\
-#$ocaml\
-#$opa\
-#$perl\
-#$php\
-#$pulumi\
-#$purescript\
-#$python\
-#$quarto\
-#$raku\
-#$rlang\
-#$red\
-#$ruby\
-#$rust\
-#$scala\
-#$solidity\
-#$swift\
-#$terraform\
-#$typst\
-#$vlang\
-#$vagrant\
-#$zig\
-#$buf\
-#$nix_shell\
-#$conda\
-#$meson\
-#$spack\
-#$memory_usage\
-#$aws\
-#$gcloud\
-#$openstack\
-#$azure\
-#$nats\
-#$direnv\
-#$env_var\
-#$crystal\
-#$custom\
-#$sudo\
-#$cmd_duration\
-#$line_break\
-#$jobs\
-#$battery\
-#$time\
-#$status\
-#$os\
-#$container\
-#$shell\
-#$character"""
-
-#format = '$all$directory$character'
-#
 [aws]
 symbol = "  "
 
