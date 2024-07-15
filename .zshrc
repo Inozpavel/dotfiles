@@ -5,8 +5,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -100,7 +98,6 @@ done
 for library in $libraries[@]; do
     zinit snippet OMZL::${library}.zsh
 done
-
 zi cdclear -q # <- forget completions provided up to this moment
 setopt promptsubst
 
@@ -138,4 +135,12 @@ alias ls="lsd"
 alias less="bat"
 alias d="dirs -v"
 
+unalias zi
+# unset **<TAB>
+# export **<TAB>
+# unalias **<TAB>
+# export FZF_COMPLETION_TRIGGER='~~'
+export FZF_DEFAULT_OPTS='--preview "if [[ -d {} ]]; then lsd --color=always {} 2>/dev/null; fi; if [[ -f {} ]]; then bat --style=numbers --color=always --line-range :500 {}; fi"'
+
+eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
