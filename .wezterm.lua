@@ -12,6 +12,8 @@ config.window_background_opacity = 0.9
 config.font = wezterm.font {
     family='JetBrainsMono Nerd Font',
     weight= "Regular",
+--  https://github.com/JetBrains/JetBrainsMono
+    harfbuzz_features={ "zero", "cv16" }
 }
 -- config.font = wezterm.font {
 --     family='FiraCode Nerd Font',
@@ -23,8 +25,12 @@ config.font_size = 15
 config.warn_about_missing_glyphs = false
 config.enable_tab_bar = true
 
---config.color_scheme = 'Sakura'
+-- config.color_scheme = 'Sakura'
 config.color_scheme = 'Slate'
+-- config.color_scheme = 'Catppuccin Mocha'
+-- config.color_scheme = 'Catppuccin Macchiato'
+-- config.color_scheme = 'Catppuccin Frappe'
+-- config.color_scheme = 'Catppuccin Latte'
 
 config.default_prog = { '/usr/bin/zsh' }
 
