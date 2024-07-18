@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 PACKAGES=(
 btop
@@ -23,6 +23,7 @@ ripgrep
 fd
 fzf
 zoxide       # https://github.com/ajeetdsouza/zoxide
+zed
 )
 
 NVIDIA=(
@@ -31,7 +32,7 @@ NVIDIA=(
   nvidia-utils
 )
 
-#$RUST_TOOLS
+RESULT_PACKAGES=()
 
 #GNOME_PACKAGES=(
 #"gdm"
@@ -63,59 +64,52 @@ USER_HOME=$(eval echo ~"${SUDO_USER}")
 main() {
   echo "Installation starting..."
 
-  update_sources_and_installed_packages
-  echo
-  install_packages
-  echo
-  install_dev_packages
-  echo
-  install_nvidia_packages
-  echo
-  change_shell_to_zsh
-  echo
-  install_wezterm
-  echo
-  install_rust
-  echo
-  link_configs
+  echo && process_packages
+  echo && change_shell_to_zsh
+  echo && install_rust
+  echo && link_configs
 
   echo "Installation success"
 }
 
-update_sources_and_installed_packages() {
-  echo "Updating packages..."
-  sudo pacman -Suy
-  echo "Package update complete"
+process_packages() {
+  RESULT_PACKAGES=($(extend_packages RESULT_PACKAGES PACKAGES))
+  RESULT_PACKAGES=($(extend_packages RESULT_PACKAGES DEV_PACKAGES))
+
+  local nvidia_device=$(lspci | grep -i VGA | grep -i NVIDIA)
+
+  if [[ $? ]]; then
+    echo
+    echo "NVIDIA device was found: [ $(echo -n $nvidia_device | cut -d ' ' -f 2-) ]"
+    RESULT_PACKAGES=($(extend_packages RESULT_PACKAGES NVIDIA))
+    echo "Add to mkinitpcio: MODULES=( nvidia nvidia_modeset nvidia_uvm nvidia_drm ) and run 'sudo mkinitpcio -P'"
+  else
+    echo "NVIDIA device wasn't found. Skipping packages"
+  fi
+
+  install_packages RESULT_PACKAGES
 }
 
 install_packages() {
-  echo "Installing required packages..."
-  for package in "${PACKAGES[@]}"; do
-    yes | sudo pacman -S --needed "${package}"
-  done
-   echo "Installing required packages completed"
-}
-
-install_dev_packages() {
-  echo "Installing dev packages..."
-  for package in "${DEV_PACKAGES[@]}"; do
-    yes | sudo pacman -S --needed "${package}"
-  done
-   echo "Installing dev packages completed"
-}
-
-# MODULES=( nvidia nvidia_modeset nvidia_uvm nvidia_drm )
-install_nvidia_packages() {
-  local nvidia_device=$(lspci | grep -i VGA | grep -i NVIDIA)
-  if [[ $? ]]; then
-    echo "NVIDIA device was found $(echo -n nvidia_device | cut -d ' ' -f 2-). Installing NVIDIA packages..."
-    for package in "${NVIDIA[@]}"; do
-      yes | sudo pacman -S --needed "${package}"
-    done
-    echo "Installing nvidia packages completed"
-  else
-    echo "NVIDIA device wasn't found. Skipping"
+  if [ $# -ne 1 ]; then
+      echo "Internal error in install_packages: expected 1 arg, got: $#"
+      return 1
   fi
+  local -n current_packages=$1
+
+  echo "Installing following packages: [ ${current_packages[@]} ]"
+  sudo pacman -Suy --needed "${current_packages[@]}"
+}
+
+extend_packages() {
+  if [ $# -ne 2 ]; then
+      echo "Internal error in install_packages: expected 2 arg, got: $#"
+      return 1
+  fi
+  local -n current_packages=$1
+  local -n packages_to_add=$2
+
+  echo "${current_packages[@]} ${packages_to_add[@]}"
 }
 
 link_configs() {
@@ -125,12 +119,6 @@ link_configs() {
 change_shell_to_zsh() {
   chsh -s "$(which zsh)" "${SUDO_USER:-"$USER"}"
   zsh
-}
-
-install_wezterm() {
-    echo "Configuring wezterm..."
-    cp "$(dirname "$0")/.wezterm.lua" "${USER_HOME}/.wezterm.lua"
-    echo "Wezterm configuration completed"
 }
 
 install_rust() {
@@ -146,12 +134,11 @@ install_rust() {
 
 check_command_exists() {
   if ! [[ $# -eq 1 ]]; then
-    >&2 echo "Internal script error: expected 1 arg in check_command_exists"
+    >&2 echo "Internal script error: expected 1 arg in check_command_exists, got $#"
     exit 1
   fi
   command -v $1 >/dev/null
-  return $?
 }
 
-main "$@"|| exit 1
+main "$@" || exit 1
 

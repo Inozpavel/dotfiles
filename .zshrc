@@ -1,3 +1,33 @@
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}}/.config/zinit"
+
+install_zinit_if_missing() {
+    if [ ! -d $ZINIT_HOME ]; then
+      echo "Missing zinit, installing..."
+      mkdir -p "$(dirname $ZINIT_HOME)"
+      git clone https://github.com/zdharma-continuum/zinit "$ZINIT_HOME"
+    fi
+}
+
+get_exit_code() {
+    if [ $# -ne 1 ]; then
+        echo "Internal error: i get_exit_code expects  args, got: $#"
+        return 1
+    fi
+    eval "$1" && echo "0" || echo "1"
+}
+
+try_add_nvidia_variables() {
+    export LIBVA_DRIVER_NAME=nvidia
+    export XDG_SESSION_TYPE=wayland
+    export GBM_BACKEND=nvidia-drm
+
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+    export WLR_NO_HARDWARE_CURSORS=1
+    export QT_QPA_PLATFORM=wayland
+
+    export SDL_VIDEODRIVER=wayland
+    export MOZ_ENABLE_WAYLAND=1
+}
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Settings
 # https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # https://github.com/zdharma-continuum/zinit
@@ -78,12 +108,8 @@ zsh-users/zsh-autosuggestions      # https://github.com/zsh-users/zsh-autosugges
 zpm-zsh/clipboard                  # https://github.com/zpm-zsh/clipboard
 )
 
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}}/.config/zinit"
-if [ ! -d $ZINIT_HOME ]; then
-  echo "Missing zinit, installing..."
-  mkdir -p "$(dirname $ZINIT_HOME)"
-  git clone https://github.com/zdharma-continuum/zinit "$ZINIT_HOME"
-fi
+
+# install_zinit_if_missing()
 
 source "${ZINIT_HOME}/zinit.zsh"
 
@@ -98,6 +124,7 @@ done
 for library in $libraries[@]; do
     zinit snippet OMZL::${library}.zsh
 done
+
 zi cdclear -q # <- forget completions provided up to this moment
 setopt promptsubst
 
@@ -124,19 +151,16 @@ unalias zi
 # unalias **<TAB>
 # export FZF_COMPLETION_TRIGGER='~~'
 export FZF_DEFAULT_OPTS='--preview "if [[ -d {} ]]; then lsd --color=always {} 2>/dev/null; fi; if [[ -f {} ]]; then bat --style=numbers --color=always --line-range :500 {}; fi"'
+has_nvidia_loaded_module=$(get_exit_code 'lsmod | grep -q nvidia_')
 
-# gdm wayland + nvidia
-if [[ $( lsmod | grep -q nvidia_ ) ]]; then
-    export LIBVA_DRIVER_NAME=nvidia
-    export XDG_SESSION_TYPE=wayland
-    export GBM_BACKEND=nvidia-drm
-    export __GLX_VENDOR_LIBRARY_NAME=nvidia
-    export WLR_NO_HARDWARE_CURSORS=1
-    export QT_QPA_PLATFORM=wayland
-
-    export SDL_VIDEODRIVER=wayland
-    export MOZ_ENABLE_WAYLAND=1
+if [[ has_nvidia_loaded_module -eq 0 ]]; then
+    try_add_nvidia_variables
 fi
 
 eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
+
+is_in_virtual_term=$(get_exit_code 'tty | grep -Eq "/dev/pts.*"')
+if [[ is_in_virtual_term -eq 0 ]]; then
+    eval "$(starship init zsh)"
+fi
+
