@@ -1,0 +1,48 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "base_keymap": "JetBrains",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "ui_font_size": 18,
+  "buffer_font_size": 16,
+  "autosave": "on_focus_change",
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "One Dark"
+  },
+  "private_files": [
+    "**/.env*",
+    "**/*.pem",
+    "**/*.key",
+    "**/*.cert",
+    "**/*.crt",
+    "**/secrets.yml",
+    "**/*.pfx"
+  ],
+  "calls": {
+    "mute_on_join": true
+  },
+  "inlay_hints": {
+    "enabled": true
+  },
+  "project_panel": {
+    "indent_size": 15
+  },
+  "tabs": {
+    "git_status": true
+  },
+  "journal": {
+    "hour_format": "hour24"
+  }
+}

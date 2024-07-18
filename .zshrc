@@ -108,23 +108,6 @@ setopt promptsubst
 # Theme 2
 zinit snippet OMZT::$ZSH_THEME
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 # Aliases
 alias ll="ls -al"
 alias grep="grep --color=auto"
@@ -141,6 +124,12 @@ unalias zi
 # unalias **<TAB>
 # export FZF_COMPLETION_TRIGGER='~~'
 export FZF_DEFAULT_OPTS='--preview "if [[ -d {} ]]; then lsd --color=always {} 2>/dev/null; fi; if [[ -f {} ]]; then bat --style=numbers --color=always --line-range :500 {}; fi"'
+
+# gdm wayland + nvidia
+if [[ $( lsmod | grep -q nvidia_ ) ]]; then
+    export GBM_BACKEND=nvidia-drm
+    export __GLX_VENDOR_LIBRARY_NAME=nvidia
+fi
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"

@@ -25,6 +25,12 @@ fzf
 zoxide       # https://github.com/ajeetdsouza/zoxide
 )
 
+NVIDIA=(
+  nvidia
+  nvidia-settings
+  nvidia-utils
+)
+
 #$RUST_TOOLS
 
 #GNOME_PACKAGES=(
@@ -52,7 +58,6 @@ zoxide       # https://github.com/ajeetdsouza/zoxide
 # Tweaks & extensions in system menu
 # Vitals
 
-
 USER_HOME=$(eval echo ~"${SUDO_USER}")
 
 main() {
@@ -63,6 +68,8 @@ main() {
   install_packages
   echo
   install_dev_packages
+  echo
+  install_nvidia_packages
   echo
   change_shell_to_zsh
   echo
@@ -95,6 +102,20 @@ install_dev_packages() {
     yes | sudo pacman -S --needed "${package}"
   done
    echo "Installing dev packages completed"
+}
+
+# MODULES=( nvidia nvidia_modeset nvidia_uvm nvidia_drm )
+install_nvidia_packages() {
+  local nvidia_device=$(lspci | grep -i VGA | grep -i NVIDIA)
+  if [[ $? ]]; then
+    echo "NVIDIA device was found $(echo -n nvidia_device | cut -d ' ' -f 2-). Installing NVIDIA packages..."
+    for package in "${NVIDIA[@]}"; do
+      yes | sudo pacman -S --needed "${package}"
+    done
+    echo "Installing nvidia packages completed"
+  else
+    echo "NVIDIA device wasn't found. Skipping"
+  fi
 }
 
 link_configs() {

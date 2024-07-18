@@ -1,0 +1,9 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "shift-delete": "editor::DeleteLine",
+      "ctrl-r": "editor::Rename"
+    }
+  }
+]
