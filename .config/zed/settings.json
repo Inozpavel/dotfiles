@@ -19,7 +19,7 @@
   "theme": {
     "mode": "dark",
     "light": "One Light",
-    "dark": "One Dark"
+    "dark": "Rosé Pine Moon"
   },
   "private_files": [
     "**/.env*",
