@@ -127,8 +127,15 @@ export FZF_DEFAULT_OPTS='--preview "if [[ -d {} ]]; then lsd --color=always {} 2
 
 # gdm wayland + nvidia
 if [[ $( lsmod | grep -q nvidia_ ) ]]; then
+    export LIBVA_DRIVER_NAME=nvidia
+    export XDG_SESSION_TYPE=wayland
     export GBM_BACKEND=nvidia-drm
     export __GLX_VENDOR_LIBRARY_NAME=nvidia
+    export WLR_NO_HARDWARE_CURSORS=1
+    export QT_QPA_PLATFORM=wayland
+
+    export SDL_VIDEODRIVER=wayland
+    export MOZ_ENABLE_WAYLAND=1
 fi
 
 eval "$(zoxide init zsh)"
