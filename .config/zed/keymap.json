@@ -1,9 +1,11 @@
 [
-  {
-    "context": "Editor",
-    "bindings": {
-      "shift-delete": "editor::DeleteLine",
-      "ctrl-r": "editor::Rename"
-    }
-  }
+	{
+		"context": "Editor",
+		"bindings": {
+			"shift-delete": "editor::DeleteLine",
+			"ctrl-r": "editor::Rename",
+			"ctrl-z": "editor::Undo",
+			"ctrl-shift-z": "editor::Redo"
+		}
+	}
 ]
