@@ -44,5 +44,11 @@
   },
   "journal": {
     "hour_format": "hour24"
+  },
+  "terminal": {
+    "working_directory": "current_project_directory",
+    "env": {
+      "EDITOR": "zeditor --wait"
+    }
   }
 }
