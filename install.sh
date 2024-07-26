@@ -38,6 +38,7 @@ hyprpaper
 hyprlock
 wofi
 nautilus
+mako
 )
 
 RESULT_PACKAGES=()
