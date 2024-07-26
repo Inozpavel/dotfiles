@@ -144,6 +144,10 @@ alias cls="clear"
 alias ls="lsd"
 alias less="bat"
 alias d="dirs -v"
+alias gp="git push"
+alias gc="git checkout -b"
+alias gcm="git checkout master && git pull"
+alias cff="cargo fix && cargo fmt"
 
 unalias zi
 # unset **<TAB>
@@ -163,4 +167,3 @@ is_in_virtual_term=$(get_exit_code 'tty | grep -Eq "/dev/pts.*"')
 if [[ is_in_virtual_term -eq 0 ]]; then
     eval "$(starship init zsh)"
 fi
-

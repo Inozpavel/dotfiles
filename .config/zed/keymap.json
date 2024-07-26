@@ -1,11 +1,13 @@
 [
-	{
-		"context": "Editor",
-		"bindings": {
-			"shift-delete": "editor::DeleteLine",
-			"ctrl-r": "editor::Rename",
-			"ctrl-z": "editor::Undo",
-			"ctrl-shift-z": "editor::Redo"
-		}
-	}
+  {
+    "context": "Editor",
+    "bindings": {
+      "shift-delete": "editor::DeleteLine",
+      "ctrl-r": "editor::Rename",
+      "ctrl-z": "editor::Undo",
+      "ctrl-shift-z": "editor::Redo",
+      "ctrl-n": "editor::ExpandAllHunkDiffs",
+      "ctrl-shift-n": "editor::ToggleHunkDiff"
+    }
+  }
 ]
