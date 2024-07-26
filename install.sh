@@ -36,6 +36,8 @@ HYPRLAND=(
 hyprland
 hyprpaper
 hyprlock
+wofi
+nautilus
 )
 
 RESULT_PACKAGES=()
