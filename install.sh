@@ -32,6 +32,12 @@ NVIDIA=(
   nvidia-utils
 )
 
+HYPRLAND=(
+hyprland
+hyprpaper
+hyprlock
+)
+
 RESULT_PACKAGES=()
 
 #GNOME_PACKAGES=(
@@ -75,6 +81,7 @@ main() {
 process_packages() {
   RESULT_PACKAGES=($(extend_packages RESULT_PACKAGES PACKAGES))
   RESULT_PACKAGES=($(extend_packages RESULT_PACKAGES DEV_PACKAGES))
+  RESULT_PACKAGES=($(extend_packages RESULT_PACKAGES HYPRLAND))
 
   local nvidia_device=$(lspci | grep -i VGA | grep -i NVIDIA)
 
