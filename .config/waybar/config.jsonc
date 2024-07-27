@@ -1,38 +1,34 @@
 // -*- mode: jsonc -*-
 {
-  "layer": "top",
-  // Waybar at top layer
-  // "position": "bottom", // Waybar position (top|bottom|left|right)
-  "height": 30,
-  // Waybar height (to be removed for auto height)
-  // "width": 1280, // Waybar width
-  "spacing": 4,
-  "include": [
-    "~/.config/waybar/modules.json"
-  ],
-  "modules-left": [
-    "wlr/taskbar",
-    "hyprland/window"
-  ],
-  "modules-center": [
-    "hyprland/workspaces"
-  ],
-  "modules-right": [
-    "hyprland/language",
-    "mpd",
-    "idle_inhibitor",
-    "pulseaudio",
-    "network",
-    "power-profiles-daemon",
-    "cpu",
-    "memory",
-    "temperature",
-    "backlight",
-    "keyboard-state",
-//    "battery",
-//    "battery#bat2",
-    "clock",
-    "tray",
-    "custom/power"
-  ]
+	"layer": "top",
+	"margin-top": 10,
+	"margin-bottom": 0,
+	"margin-left": 0,
+	"margin-right": 0,
+	"spacing": 4,
+	"include": [
+		"~/.config/waybar/modules/hardware.json",
+		"~/.config/waybar/modules/common.json",
+		"~/.config/waybar/modules/tools.json",
+		"~/.config/waybar/modules/hyprland.json"
+	],
+	"modules-left": [
+		"wlr/taskbar",
+		"hyprland/window"
+	],
+	"modules-center": [
+		"hyprland/workspaces"
+	],
+	"modules-right": [
+		"hyprland/language",
+		"custom/updates",
+		"pulseaudio",
+		"bluetooth",
+		"network",
+		"power-profiles-daemon",
+		"group/hardware",
+		"keyboard-state",
+		"battery",
+		"clock"
+	]
 }
