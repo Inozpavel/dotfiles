@@ -5,6 +5,7 @@
     "metrics": false
   },
   "buffer_font_family": "JetBrainsMono Nerd Font",
+  "ui_font_family": "JetBrainsMono Nerd Font",
   "ui_font_size": 18,
   "buffer_font_size": 16,
   "autosave": "on_focus_change",
