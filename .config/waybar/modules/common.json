@@ -85,11 +85,11 @@
     "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",
     "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
+      " ",
+      " ",
+      " ",
+      " ",
+      " "
     ]
   },
   "battery#bat2": {
@@ -102,7 +102,7 @@
     "format-icons": {
       "default": "",
       "performance": "",
-      "balanced": "",
+      "balanced": " ",
       "power-saver": ""
     }
   },
@@ -114,7 +114,8 @@
     "format-alt": "{ifname}: {ipaddr}/{cidr}",
     "tooltip-format": "{ifname} via {gwaddr}",
     "tooltip-format-wifi": "  {ifname} @ {essid}\nAddress: {ipaddr}/{cidr}\nStrength: {signalStrength}%\nFrequency: {frequency}MHz\n󰕒 {bandwidthUpBits} 󰇚 {bandwidthDownBits}",
-    "tooltip-format-ethernet": "󰈀 {ifname}\nAddress: {ipaddr}/{cidr}\n󰕒 {bandwidthUpBits} 󰇚 {bandwidthDownBits}"
+    "tooltip-format-ethernet": "󰈀 {ifname}\nAddress: {ipaddr}/{cidr}\n󰕒 {bandwidthUpBits} 󰇚 {bandwidthDownBits}",
+    "on-click": "nm-connection-editor"
   },
   "pulseaudio": {
     "format": "{volume}% {icon} {format_source}",
