@@ -107,27 +107,29 @@
     }
   },
   "network": {
-    "format-wifi": "{essid} ({signalStrength}%) ",
-    "format-ethernet": "{ipaddr}/{cidr} ",
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    "format-wifi": "  {essid} ({signalStrength}%)",
+    "format-ethernet": "󰈀  {ipaddr}/{cidr}",
+    "format-linked": "{ifname} (No IP)",
+    "format-disconnected": "Network disconnected ⚠",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "tooltip-format-wifi": "  {ifname} @ {essid}\nAddress: {ipaddr}/{cidr}\nStrength: {signalStrength}%\nFrequency: {frequency}MHz\n󰕒 {bandwidthUpBits} 󰇚 {bandwidthDownBits}",
+    "tooltip-format-ethernet": "󰈀 {ifname}\nAddress: {ipaddr}/{cidr}\n󰕒 {bandwidthUpBits} 󰇚 {bandwidthDownBits}"
   },
   "pulseaudio": {
     "format": "{volume}% {icon} {format_source}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": " {format_source}",
+    "format-bluetooth": "{volume}% {icon} 󰂯 {format_source}",
+    "format-bluetooth-muted": "  {icon} 󰂯 {format_source}",
+    "format-muted": "  {format_source}",
     "format-source": "{volume}% ",
-    "format-source-muted": "",
+    "format-source-muted": " ",
     "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
-      "phone": "",
-      "portable": "",
-      "car": "",
+      "headphone": "  ",
+      "hands-free": "  ",
+      "headset": "  ",
+      "phone": "  ",
+      "portable": "  ",
+      "car": "  ",
       "default": [
         "  ",
         "  ",
@@ -137,8 +139,8 @@
     "on-click": "pavucontrol"
   },
   "bluetooth": {
-    "format": " {num_connections}",
-    "format-connected": " {device_alias}",
+    "format": "󰂯 {num_connections}",
+    "format-connected": "󰂯 {device_alias}",
     "format-disabled": "\uDB80\uDCB2",
     "format-off": "Bluetooth off",
     "on-click": "blueman-manager",
