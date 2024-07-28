@@ -40,6 +40,7 @@ wofi
 nautilus
 mako
 python-pywall
+pavucontrol
 )
 
 RESULT_PACKAGES=()
