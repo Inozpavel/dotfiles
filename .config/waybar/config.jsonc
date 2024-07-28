@@ -29,6 +29,7 @@
 		"power-profiles-daemon",
 		"keyboard-state",
 		"battery",
-		"clock"
+		"clock",
+		"group/tools"
 	]
 }

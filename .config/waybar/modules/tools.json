@@ -1,1 +1,31 @@
-{}
+{
+  "group/tools": {
+    "orientation": "inherit",
+    "modules": [
+      "custom/quit",
+      "custom/lock",
+      "custom/reboot",
+      "custom/power"
+    ]
+  },
+  "custom/quit": {
+    "format": "󰗼",
+    "tooltip": false,
+    "on-click": "hyprctl dispatch exit"
+  },
+  "custom/lock": {
+    "format": "󰍁",
+    "tooltip": false,
+    "on-click": "swaylock"
+  },
+  "custom/reboot": {
+    "format": "󰑓",
+    "tooltip": false,
+    "on-click": "reboot"
+  },
+  "custom/power": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "shutdown now"
+  }
+}

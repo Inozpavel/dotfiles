@@ -1,7 +1,6 @@
 {
   "group/hardware": {
     "orientation": "inherit",
-
     "modules": [
       "cpu",
       "disk",
