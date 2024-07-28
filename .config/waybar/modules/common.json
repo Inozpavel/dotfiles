@@ -31,7 +31,7 @@
     }
   },
   "clock": {
-    "locale": "ru_RU.UTF-8",
+    "interval": "29",
     "format": "{:%H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format-alt": "{:L%Y-%m-%d %H:%M %a}",
