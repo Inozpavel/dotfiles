@@ -21,15 +21,6 @@
     "rewrite": {
     }
   },
-  "keyboard-state": {
-    "numlock": true,
-    "capslock": true,
-    "format": "{name} {icon}",
-    "format-icons": {
-      "locked": "",
-      "unlocked": ""
-    }
-  },
   "clock": {
     "interval": "29",
     "format": "{:%H:%M}",
