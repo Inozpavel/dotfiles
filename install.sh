@@ -41,6 +41,7 @@ nautilus
 mako
 python-pywall
 pavucontrol
+blueman
 )
 
 RESULT_PACKAGES=()

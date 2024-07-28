@@ -137,11 +137,13 @@
     "on-click": "pavucontrol"
   },
   "bluetooth": {
-    "format": " {status}",
-    "format-disabled": "Bluetooth disabled",
+    "format": " {num_connections}",
+    "format-connected": " {device_alias}",
+    "format-disabled": "\uDB80\uDCB2",
     "format-off": "Bluetooth off",
-    "interval": 30,
     "on-click": "blueman-manager",
-    "format-no-controller": "Bluetooth no controller"
+    "format-no-controller": "Bluetooth no controller",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
   }
 }
