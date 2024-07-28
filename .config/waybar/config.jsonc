@@ -21,12 +21,12 @@
 	],
 	"modules-right": [
 		"hyprland/language",
+		"group/hardware",
 		"custom/updates",
 		"pulseaudio",
 		"bluetooth",
 		"network",
 		"power-profiles-daemon",
-		"group/hardware",
 		"keyboard-state",
 		"battery",
 		"clock"

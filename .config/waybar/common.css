@@ -202,17 +202,22 @@ window#waybar.empty #window {
 /* -----------------------------------------------------
  * group/hardware
  * ----------------------------------------------------- */
-#cpu {
-    background-color: #2ecc71;
-    color: #000000;
+
+#hardware{
+    background-color: @backgroundlight;
+    font-size: 16px;
+    color: @textcolor2;
+    border-radius: 15px;
+    opacity: 0.8;
+    padding: 2px 15px 0px 10px;
+    margin: 5px 15px 5px 0px;
 }
 
-#memory {
-    background-color: #9b59b6;
-}
-
-#disk {
-    background-color: #964b00;
+#disk, #memory, #cpu, #language {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    color: @textcolor2;
 }
 
 /* -----------------------------------------------------
