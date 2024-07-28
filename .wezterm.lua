@@ -1,5 +1,7 @@
 local wezterm = require 'wezterm'
 
+wezterm.add_to_config_reload_watch_list('/home/inozpavel/.cache/wal/wezterm-wal.toml')
+
 local config = wezterm.config_builder()
 
 config.window_background_opacity = 0.9
@@ -23,10 +25,12 @@ config.font = wezterm.font {
 -- }
 config.font_size = 15
 config.warn_about_missing_glyphs = false
-config.enable_tab_bar = true
+config.hide_tab_bar_if_only_one_tab = true
+-- config.color_scheme = 'Slate'
 
+config.color_scheme_dirs = { '/home/inozpavel/.cache/wal' }
+config.color_scheme = 'wezterm-wal'
 -- config.color_scheme = 'Sakura'
-config.color_scheme = 'Slate'
 -- config.color_scheme = 'Catppuccin Mocha'
 -- config.color_scheme = 'Catppuccin Macchiato'
 -- config.color_scheme = 'Catppuccin Frappe'
