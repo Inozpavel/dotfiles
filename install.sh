@@ -39,6 +39,7 @@ hyprlock
 wofi
 nautilus
 mako
+python-pywall
 )
 
 RESULT_PACKAGES=()
