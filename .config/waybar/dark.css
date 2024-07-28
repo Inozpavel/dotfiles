@@ -1,12 +1,12 @@
 :root {
-    --backgroundlight: @color8;
+    --backgroundlight: var(--color8);
     --backgrounddark: #FFFFFF;
-    --workspacesbackground1: @color8;
+    --workspacesbackground1: var(--color8);
     --workspacesbackground2: #FFFFFF;
-    --bordercolor: @color8;
-    --textcolor1: @color8;
+    --bordercolor: var(--color8);
+    --textcolor1: var(--color8);
     --textcolor2: #FFFFFF;
     --textcolor3: #FFFFFF;
-    --iconcolor: @color8;
+    --iconcolor: var(--color8);
 }
 

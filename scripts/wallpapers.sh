@@ -11,6 +11,8 @@ echo -n "$updated_config" > $config_path
 
 wal -i $wallpaper
 
+sh ~/scripts/waybar/launch.sh
+
 killall hyprpaper
 pkill hyprpaper
 hyprpaper &
