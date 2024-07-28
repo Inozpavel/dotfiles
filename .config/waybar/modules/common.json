@@ -18,12 +18,7 @@
       "Alacritty",
       "kitty"
     ],
-    "app_ids-mapping": {
-      "firefoxdeveloperedition": "firefox-developer-edition"
-    },
     "rewrite": {
-      "Firefox Web Browser": "Firefox",
-      "Foot Server": "Terminal"
     }
   },
   "keyboard-state": {
@@ -91,9 +86,6 @@
       " ",
       " "
     ]
-  },
-  "battery#bat2": {
-    "bat": "BAT2"
   },
   "power-profiles-daemon": {
     "format": "{icon}",
