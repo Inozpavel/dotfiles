@@ -1,5 +1,6 @@
 @import "common.css";
 
+/* Css variables are not supported :( */
 @define-color color8 #a4898e;
 @define-color backgroundlight @color8;
 @define-color backgrounddark #FFFFFF;
