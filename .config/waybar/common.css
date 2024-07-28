@@ -112,27 +112,6 @@ button:hover {
     box-shadow: inset 0 -3px #ffffff;
 }
 
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#power-profiles-daemon,
-#mpd {
-    padding: 0 10px;
-    color: #ffffff;
-}
-
 #window,
 #workspaces {
     margin: 0 4px;
@@ -149,7 +128,14 @@ button:hover {
 }
 
 #clock {
-    background-color: #64727d;
+    background-color: @backgrounddark;
+    font-size: 16px;
+    color: @textcolor1;
+    border-radius: 15px;
+    padding: 1px 10px 0px 10px;
+    margin: 3px 15px 3px 0px;
+    opacity:0.8;
+    border:3px solid @bordercolor;
 }
 
 #battery {
