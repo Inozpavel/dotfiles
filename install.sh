@@ -27,16 +27,16 @@ zed
 base-devel
 )
 
-NVIDIA=(
+NVIDIA_PACKAGES=(
   nvidia
   nvidia-settings
   nvidia-utils
 )
 
-HYPRLAND=(
-hyprland
-hyprpaper
-hyprlock
+HYPRLAND_PACKAGES=(
+hyprland                         # https://github.com/hyprwm/Hyprland
+hyprpaper                        # https://github.com/hyprwm/hyprpaper
+hyprlock                         # wofihttps://github.com/hyprwm/hyprlock
 wofi
 nautilus
 mako
@@ -45,9 +45,9 @@ pavucontrol
 blueman
 )
 
-AUR=(
-mission-center
-waypaper
+AUR_PACKAGES=(
+mission-center                   # https://gitlab.com/mission-center-devs/mission-center
+waypaper                         # https://github.com/anufrievroman/waypaper
 )
 
 RESULT_PACKAGES=()
@@ -83,6 +83,8 @@ main() {
   echo "Installation starting..."
 
   echo && process_packages
+  echo && install_aur_via_paru
+  echo && install_aur_packages
   echo && change_shell_to_zsh
   echo && install_rust
   echo && link_configs
@@ -93,14 +95,16 @@ main() {
 process_packages() {
   RESULT_PACKAGES=($(extend_packages RESULT_PACKAGES PACKAGES))
   RESULT_PACKAGES=($(extend_packages RESULT_PACKAGES DEV_PACKAGES))
-  RESULT_PACKAGES=($(extend_packages RESULT_PACKAGES HYPRLAND))
+  RESULT_PACKAGES=($(extend_packages RESULT_PACKAGES HYPRLAND_PACKAGES))
 
-  local nvidia_device=$(lspci | grep -i VGA | grep -i NVIDIA)
+  local nvidia_device=$(lspci | grep -i VGA | grep -i NVIDIA_PACKAGES)
 
   if [[ $? ]]; then
     echo
-    echo "NVIDIA device was found: [ $(echo -n $nvidia_device | cut -d ' ' -f 2-) ]"
-    RESULT_PACKAGES=($(extend_packages RESULT_PACKAGES NVIDIA))
+    echo "NVIDIA device was found: [ $(echo -n "$nvidia_device" | cut -d ' ' -f 2-) ]"
+
+    # shellcheck disable=SC2034
+    RESULT_PACKAGES=($(extend_packages RESULT_PACKAGES NVIDIA_PACKAGES))
     echo "Add to mkinitpcio: MODULES=( nvidia nvidia_modeset nvidia_uvm nvidia_drm ) and run 'sudo mkinitpcio -P'"
   else
     echo "NVIDIA device wasn't found. Skipping packages"
@@ -151,12 +155,26 @@ install_rust() {
 
 }
 
+install_aur_via_paru() {
+  echo "Installing paru.."
+
+  git clone https://aur.archlinux.org/paru.git
+  sh -c "cd paru && makepkg -si"
+
+  echo "Paru insall completed"
+}
+
+install_aur_packages() {
+   echo "Installing following packages: [ ${AUR_PACKAGES[@]} ]"
+   paru -S "${AUR_PACKAGES[@]}"
+}
+
 check_command_exists() {
   if ! [[ $# -eq 1 ]]; then
     >&2 echo "Internal script error: expected 1 arg in check_command_exists, got $#"
     exit 1
   fi
-  command -v $1 >/dev/null
+  command -v "$1" >/dev/null
 }
 
 main "$@" || exit 1
