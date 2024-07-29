@@ -1,5 +1,5 @@
-wallpaper=~/.config/wallpapers/default.jpg
-#wallpaper=~/.config/wallpapers/hyprland.jpg
+#wallpaper=~/.config/wallpapers/default.jpg
+wallpaper=~/.config/wallpapers/hyprland.jpg
 #wallpaper=~/.config/wallpapers/liquid.jpg
 #wallpaper=~/.config/wallpapers/explorer_orange_sunset.jpg
 #wallpaper=~/.config/wallpapers/sundown-over-water.jpg
