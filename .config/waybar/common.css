@@ -9,9 +9,7 @@
 }
 
 window#waybar {
-    background-color: rgba(0, 0, 0, 0.8);
     border-bottom: 0 solid #ffffff;
-    /* color: #FFFFFF; */
     background: transparent;
     transition-property: background-color;
     transition-duration: 0.5s;
@@ -68,7 +66,7 @@ window#waybar {
 #window {
     background: @backgroundlight;
     margin: 5px 15px 5px 0;
-    padding: 2px 10px 0 10px;
+    padding: 0px 10px 0 10px;
     border-radius: 12px;
     color: @textcolor2;
     font-size: 16px;
