@@ -24,6 +24,7 @@ fd
 fzf
 zoxide       # https://github.com/ajeetdsouza/zoxide
 zed
+base-devel
 )
 
 NVIDIA=(
@@ -42,6 +43,11 @@ mako
 python-pywall
 pavucontrol
 blueman
+)
+
+AUR=(
+mission-center
+waypaper
 )
 
 RESULT_PACKAGES=()

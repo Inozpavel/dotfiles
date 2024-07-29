@@ -3,28 +3,27 @@
     "orientation": "inherit",
     "modules": [
       "cpu",
-      "disk",
-      "memory"
+      "memory",
+      "disk"
     ]
   },
   "disk": {
     "interval": 30,
     "format": "|    {percentage_used}% ",
     "path": "/",
-    "on-click": "~/dotfiles/.settings/systeminfo.sh"
+    "on-click": "sh ~/scripts/systeminfo.sh"
   },
   "cpu": {
-    "interval": 2,
+    "interval": 3,
     "format": "  {usage}% ",
     "tooltip": true,
-    "on-click": "~/dotfiles/.settings/systeminfo.sh"
+    "on-click": "sh ~/scripts/systeminfo.sh"
   },
   "memory": {
     "interval": 5,
-    "format": "|   {used:0.1f}G/{total:0.1f}G ({}%)",
-    "on-click": "~/dotfiles/.settings/systeminfo.sh",
+    "format": "|   {used:0.1f}G/{total:0.1f}G ({}%) ",
+    "on-click": "sh ~/scripts/systeminfo.sh",
     "tooltip": true,
     "tooltip-format": "SWAP: {swapUsed:0.1f}G/{swapTotal:0.1f}G\n Available memory: {avail}G, swap: {swapAvail}G"
-  },
-
+  }
 }
