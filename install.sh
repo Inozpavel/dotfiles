@@ -48,6 +48,7 @@ blueman
 AUR_PACKAGES=(
 mission-center                   # https://gitlab.com/mission-center-devs/mission-center
 waypaper                         # https://github.com/anufrievroman/waypaper
+wlogout                          # https://github.com/ArtsyMacaw/wlogout
 )
 
 RESULT_PACKAGES=()
