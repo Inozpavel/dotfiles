@@ -36,11 +36,11 @@ NVIDIA_PACKAGES=(
 HYPRLAND_PACKAGES=(
 hyprland                         # https://github.com/hyprwm/Hyprland
 hyprpaper                        # https://github.com/hyprwm/hyprpaper
-hyprlock                         # wofihttps://github.com/hyprwm/hyprlock
+hyprlock                         # https://github.com/hyprwm/hyprlock
 wofi
 nautilus
 mako
-python-pywall
+python-pywall                    # https://github.com/dylanaraps/pywal
 pavucontrol
 blueman
 )
