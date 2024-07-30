@@ -20,9 +20,9 @@
 		"hyprland/workspaces"
 	],
 	"modules-right": [
+		"custom/updates",
 		"hyprland/language",
 		"group/hardware",
-		"custom/updates",
 		"pulseaudio",
 		"bluetooth",
 		"network",

@@ -3,7 +3,7 @@
     "format": "   {}",
     "escape": true,
     "return-type": "json",
-    "exec": "~/dotfiles/scripts/updates.sh",
+    "exec": "sh ~/scripts/updates.sh",
     "restart-interval": 60,
     "on-click": "$(cat ~/dotfiles/.settings/terminal.sh) --class dotfiles-floating -e ~/dotfiles/scripts/installupdates.sh",
     "on-click-right": "~/dotfiles/.settings/software.sh"
