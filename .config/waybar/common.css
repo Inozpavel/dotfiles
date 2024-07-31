@@ -250,19 +250,6 @@ window#waybar.empty #window {
 }
 
 /* -----------------------------------------------------
- * tray
- * ----------------------------------------------------- */
-
-#idle_inhibitor {
-    background-color: #2d3436;
-}
-
-#idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
-}
-
-/* -----------------------------------------------------
  * hyprland/language
  * ----------------------------------------------------- */
 #language {
@@ -274,7 +261,6 @@ window#waybar.empty #window {
     margin: 4px 0px;
     opacity: 0.8;
 }
-
 
 #custom-power,
 #custom-reboot,
@@ -316,4 +302,12 @@ window#waybar.empty #window {
 #custom-updates.red {
     background-color: #dc2f2f;
     color: #FFFFFF;
+}
+
+#custom-cliphist {
+    padding: 0 2px 0 7px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: @iconcolor;
 }

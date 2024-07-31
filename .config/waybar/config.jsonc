@@ -22,8 +22,8 @@
 	],
 	"modules-right": [
 		"custom/updates",
-		"custom/cliphist",
 		"hyprland/language",
+		"custom/cliphist",
 		"group/hardware",
 		"pulseaudio",
 		"bluetooth",

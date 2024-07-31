@@ -30,7 +30,7 @@
 @define-color textcolor1 #FFFFFF;
 @define-color textcolor2 #FFFFFF;
 @define-color textcolor3 #000000;
-@define-color iconcolor #000000;
+@define-color iconcolor #FFFFFF;
 
 window#waybar {
     background-color: rgba(255,255,255,0.1);
