@@ -43,6 +43,8 @@ mako
 python-pywall                    # https://github.com/dylanaraps/pywal
 pavucontrol
 blueman
+grim
+slurp
 )
 
 AUR_PACKAGES=(
