@@ -1,8 +1,9 @@
+mode=drun
 allow_images=true
 allow_markup=true
 insensitive=true
 hide_scroll=false
 lines=15
-no_actions=true
+no_actions=false
 #term=$HOME/.config/sway/scripts/terminal.sh
-width=1000
+width=50%

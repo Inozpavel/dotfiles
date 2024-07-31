@@ -304,7 +304,7 @@ window#waybar.empty #window {
     color: #FFFFFF;
 }
 
-#custom-cliphist {
+#custom-cliphist, #custom-wallpaper {
     padding: 0 2px 0 7px;
     border-radius: 15px;
     font-size: 16px;

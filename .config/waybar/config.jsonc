@@ -15,7 +15,8 @@
 	],
 	"modules-left": [
 		"wlr/taskbar",
-		"hyprland/window"
+		"hyprland/window",
+		"custom/wallpaper"
 	],
 	"modules-center": [
 		"hyprland/workspaces"

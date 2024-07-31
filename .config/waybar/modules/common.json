@@ -15,6 +15,11 @@
     "on-click-middle": "sleep 0.1 && sh ~/scripts/cliphist.sh w",
     "tooltip-format": "Clipboard Manager"
   },
+  "custom/wallpaper": {
+    "format": " ",
+    "on-click": "waypaper",
+    "tooltip-format": "Wallpapers"
+  },
   "wlr/taskbar": {
     "format": "{icon}",
     "icon-size": 18,
