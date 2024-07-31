@@ -1,5 +1,5 @@
 case "$1" in
-  d) ;;
-  w) ;;
+  d) cliphist list | wofi -S dmenu | cliphist delete ;;
+  w) cliphist wipe ;;
   *) cliphist list | wofi -S dmenu | cliphist decode | wl-copy ;;
 esac

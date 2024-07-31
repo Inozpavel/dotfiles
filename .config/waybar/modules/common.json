@@ -8,6 +8,13 @@
     "on-click": "$(cat ~/dotfiles/.settings/terminal.sh) --class dotfiles-floating -e ~/dotfiles/scripts/installupdates.sh",
     "on-click-right": "~/dotfiles/.settings/software.sh"
   },
+  "custom/cliphist": {
+    "format": " ",
+    "on-click": "sleep 0.1 && sh ~/scripts/cliphist.sh",
+    "on-click-right": "sleep 0.1 && sh ~/scripts/cliphist.sh d",
+    "on-click-middle": "sleep 0.1 && sh ~/scripts/cliphist.sh w",
+    "tooltip-format": "Clipboard Manager"
+  },
   "wlr/taskbar": {
     "format": "{icon}",
     "icon-size": 18,
