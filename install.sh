@@ -44,7 +44,8 @@ python-pywall                    # https://github.com/dylanaraps/pywal
 pavucontrol
 blueman
 grim
-slurp
+slurp                            # https://github.com/emersion/slurp
+pinta
 )
 
 AUR_PACKAGES=(
@@ -60,7 +61,7 @@ RESULT_PACKAGES=()
 #"gnome"
 #"gnome-bluetooth-3.0"
 #)
-
+#v4l2loopback
 # Gnome extensions
 # App indicator and LStatusNotifierItem Support
 # ArcMenu
