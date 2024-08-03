@@ -35,7 +35,7 @@ NVIDIA_PACKAGES=(
 
 HYPRLAND_PACKAGES=(
 hyprland                         # https://github.com/hyprwm/Hyprland
-hyprpaper                        # https://github.com/hyprwm/hyprpaper
+# hyprpaper                        # https://github.com/hyprwm/hyprpaper
 hyprlock                         # https://github.com/hyprwm/hyprlock
 wofi
 nautilus
@@ -47,6 +47,7 @@ grim
 slurp                            # https://github.com/emersion/slurp
 pinta
 xdg-desktop-portal-hyprland
+swww                             # https://github.com/LGFae/swww
 )
 
 AUR_PACKAGES=(
