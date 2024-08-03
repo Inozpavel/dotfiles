@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+rasi_file="$HOME/.config/rofi/current_wallpaper.rasi"
+
 main() {
   if [[ $# -eq 1 ]]; then
     wallpaper=$1
@@ -17,6 +19,8 @@ main() {
   fi
 
   wal -s -t -n -i "$wallpaper"
+
+  echo "* { current-image: url(\"$wallpaper\", height); }" > "$rasi_file"
 
   #generate_hyprpaper_config
 
