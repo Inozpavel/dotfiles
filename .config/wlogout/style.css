@@ -31,26 +31,26 @@ window {
 
 button {
     color: @foreground;
-    background-color: @background;
+    background-color: @color10;
     outline-style: none;
     border: none;
-    border-width: 0px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 10%;
-    border-radius: 0px;
+    border-radius: 60px;
     box-shadow: none;
     text-shadow: none;
     animation: gradient_f 20s ease-in infinite;
 }
 
 button:focus {
-    background-color: transparent;
+    /*background-color: transparent;*/
     background-size: 20%;
 }
 
 button:hover {
-    background-color: transparent;
+    background-color: @color8;
+
     background-size: 25%;
     border-radius: 15px;
     animation: gradient_f 20s ease-in infinite;
