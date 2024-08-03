@@ -46,6 +46,7 @@ blueman
 grim
 slurp                            # https://github.com/emersion/slurp
 pinta
+xdg-desktop-portal-hyprland
 )
 
 AUR_PACKAGES=(
