@@ -21,9 +21,6 @@ configuration {
     
 }
 
-/* ---- Load font ---- */
-//@import "~/.config/ml4w/settings/rofi-font.rasi"
-
 /* ---- Load pywal colors (custom wal template) ---- */
 @import "~/.cache/wal/colors-rofi.rasi"
 
@@ -35,7 +32,7 @@ configuration {
 
 /* ---- Window ---- */
 window {
-    width:                        1000px;
+    width:                        600px;
     x-offset:                     -14px;
     y-offset:                     65px;
     spacing:                      0px;

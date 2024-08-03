@@ -5,6 +5,7 @@ case "$1" in
   w) if  [ `echo -e "Clear\nCancel" | rofi -dmenu -config ~/.config/rofi/config-short.rasi` == "Clear" ]; then
       cliphist wipe
       fi;;
+  i)  rofi -modi clipboard:~/.config/rofi/cliphist-rofi-img -show clipboard -show-icons -config ~/.config/rofi/config-buffer-images.rasi;;
 #  *) cliphist list | rofi -dmenu -replace -config ~/dotfiles/.config/rofi/config-cliphist.rasi  | cliphist decode | wl-copy
-  *) rofi -modi clipboard:~/.config/rofi/cliphist-rofi-img -show clipboard -show-icons  -config ~/dotfiles/.config/rofi/config-cliphist.rasi;;
+  *) cliphist list | rofi -dmenu | cliphist decode | wl-copy;;
 esac
