@@ -1,3 +1,5 @@
+#!/usr/bin/bash
+
 # kill all possible running xdg-desktop-portals
 killall -e xdg-desktop-portal-hyprland
 killall -e xdg-desktop-portal-gnome
