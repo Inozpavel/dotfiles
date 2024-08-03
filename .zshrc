@@ -149,6 +149,7 @@ alias gc="git checkout -b"
 alias gcm="git checkout master && git pull"
 alias cff="cargo fix && cargo fmt"
 alias mkdir="mkdir -p"
+alias cp="cp -r"
 
 unalias zi
 # unset **<TAB>
