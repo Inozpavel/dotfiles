@@ -1,33 +1,24 @@
 {
     "label" : "lock",
-    "action" : "loginctl lock-session",
+    "action" : "hyprlock",
     "text" : "Заблокировать",
     "keybind" : "l"
 }
-{
-    "label" : "hibernate",
-    "action" : "systemctl hibernate",
-    "text" : "Гибернация",
-    "keybind" : "h"
-}
+
 {
     "label" : "logout",
-    "action" : "loginctl terminate-user $USER",
+    "action" : "hyprctl dispatch exit 0",
     "text" : "Выйти",
     "keybind" : "e"
 }
+
 {
     "label" : "shutdown",
     "action" : "systemctl poweroff",
     "text" : "Выключить",
     "keybind" : "s"
 }
-{
-    "label" : "suspend",
-    "action" : "systemctl suspend",
-    "text" : "Приостановить",
-    "keybind" : "u"
-}
+
 {
     "label" : "reboot",
     "action" : "systemctl reboot",

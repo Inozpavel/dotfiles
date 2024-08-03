@@ -1,12 +1,6 @@
 /*
-#  ____        __ _
-# |  _ \ ___  / _(_)
-# | |_) / _ \| |_| |
-# |  _ < (_) |  _| |
-# |_| \_\___/|_| |_|
-#
-# by Stephan Raabe (2023)
-# -----------------------------------------------------
+https://github.com/davatorium/rofi/blob/next/doc/rofi-theme.5.markdown
+https://github.com/orkhasnat/rofi-themes?tab=readme-ov-file
 */
 
 * {
