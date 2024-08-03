@@ -1,39 +1,28 @@
-/*
-#  ____        __ _
-# |  _ \ ___  / _(_)
-# | |_) / _ \| |_| |
-# |  _ < (_) |  _| |
-# |_| \_\___/|_| |_|
-#
-# by Stephan Raabe (2023)
-# -----------------------------------------------------
-*/
-
 * {
    border-width: 3px;
    font: "JetBrains Mono Nerd Font 14";
  }
 
-/* ---- Configuration ---- */
+/*---- Configuration ---- */
 configuration {
-    modi:                       "drun";
-    show-icons:                 true;
+    modi:                       "drun,run";
+    font:                       "Fira Sans 11";
+    show-icons:                 false;
     icon-theme:                 "kora";
-    display-drun:               "Приложения";
+    display-drun:               "APPS";
     display-run:                "RUN";
     display-filebrowser:        "FILES";
     display-window:             "WINDOW";
-	drun-display-format:        "{name}";
-    hover-select:               false;
-    scroll-method:              1;
+	hover-select:               true;
     me-select-entry:            "";
     me-accept-entry:            "MousePrimary";
+    drun-display-format:        "{name}";
     window-format:              "{w} · {c} · {t}";
-
+    
 }
 
 /* ---- Load font ---- */
-//@import "~/dotfiles/.settings/rofi-font.rasi"
+//@import "~/.config/ml4w/settings/rofi-font.rasi"
 
 /* ---- Load pywal colors (custom wal template) ---- */
 @import "~/.cache/wal/colors-rofi.rasi"
@@ -41,21 +30,24 @@ configuration {
 /* ---- Load wallpaper ---- */
 //@import "~/.cache/current_wallpaper.rasi"
 
+/* ---- Load border width ---- */
+//@import "~/.config/ml4w/settings/rofi-border.rasi"
+
 /* ---- Window ---- */
 window {
-    width:                        900px;
-    x-offset:                     0px;
-    y-offset:                     0px;
+    width:                        400px;
+    x-offset:                     -14px;
+    y-offset:                     65px;
     spacing:                      0px;
     padding:                      0px;
-    margin:                       0px;
+    margin:                       0px; 
     color:                        #FFFFFF;
     border:                       @border-width;
     border-color:                 #FFFFFF;
     cursor:                       "default";
     transparency:                 "real";
-    location:                     center;
-    anchor:                       center;
+    location:                     northeast;
+    anchor:                       northeast;
     fullscreen:                   false;
     enabled:                      true;
     border-radius:                10px;
@@ -70,7 +62,7 @@ mainbox {
     margin:                       0px;
     background-color:             @background;
     background-image:             @current-image;
-    children:                     ["imagebox","listbox"];
+    children:                     ["listbox"];
 }
 
 /* ---- Imagebox ---- */
@@ -86,7 +78,7 @@ listbox {
     spacing:                     20px;
     background-color:            transparent;
     orientation:                 vertical;
-    children:                    [ "message", "listview" ];
+    children:                    [ "inputbar", "message", "listview" ];
 }
 
 /* ---- Dummy ---- */
@@ -100,7 +92,7 @@ inputbar {
     text-color:                   @foreground;
     spacing:                      10px;
     padding:                      15px;
-    border-radius:                10px;
+    border-radius:                0px;
     border-color:                 @foreground;
     background-color:             @background;
     children:                     [ "textbox-prompt-colon", "entry" ];
@@ -109,8 +101,8 @@ inputbar {
 textbox-prompt-colon {
     enabled:                      true;
     expand:                       false;
-    str:                          "";
     padding:                      0px 5px 0px 0px;
+    str:                          "";
     background-color:             transparent;
     text-color:                   inherit;
 }
@@ -151,8 +143,8 @@ listview {
     enabled:                      true;
     columns:                      1;
     lines:                        8;
-    cycle:                        false;
-    dynamic:                      false;
+    cycle:                        true;
+    dynamic:                      true;
     scrollbar:                    false;
     layout:                       vertical;
     reverse:                      false;
