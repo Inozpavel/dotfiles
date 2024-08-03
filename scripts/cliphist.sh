@@ -7,5 +7,5 @@ case "$1" in
       fi;;
   i)  rofi -modi clipboard:~/.config/rofi/cliphist-rofi-img -show clipboard -show-icons -config ~/.config/rofi/config-buffer-images.rasi;;
 #  *) cliphist list | rofi -dmenu -replace -config ~/dotfiles/.config/rofi/config-cliphist.rasi  | cliphist decode | wl-copy
-  *) cliphist list | rofi -dmenu | cliphist decode | wl-copy;;
+  *) cliphist list | rofi -dmenu -i -display-columns 2 -config ~/.config/rofi/config-cliphist.rasi | cliphist decode | wl-copy;;
 esac
