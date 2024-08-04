@@ -125,7 +125,7 @@ element normal.active {
 }
 
 element selected.normal {
-    background-color:            @color11;
+    background-color:            @color1;
     text-color:                  @foreground;
 }
 
