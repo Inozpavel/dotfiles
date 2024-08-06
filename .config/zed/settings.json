@@ -27,7 +27,8 @@
     "default_width": 260
   },
   "tabs": {
-    "git_status": true
+    "git_status": true,
+    "file_icons": true
   },
   "journal": {
     "hour_format": "hour24"
@@ -53,5 +54,6 @@
     "env": {
       "EDITOR": "zeditor --wait"
     }
-  }
+  },
+  "auto_signature_help": true
 }
