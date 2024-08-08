@@ -98,6 +98,7 @@ main() {
   echo "Installation success"
 }
 
+#sudo flatpak override --socket=wayland ru.yandex.Browser
 process_packages() {
   RESULT_PACKAGES=($(extend_packages RESULT_PACKAGES PACKAGES))
   RESULT_PACKAGES=($(extend_packages RESULT_PACKAGES DEV_PACKAGES))

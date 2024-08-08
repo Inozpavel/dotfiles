@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+paru -Sy > /dev/null
+
 threshold_green=0
 threshold_yellow=25
 threshold_red=100
@@ -33,5 +35,3 @@ if [ "$available_updates" -gt "$threshold_green" ]; then
 else
     printf '{"text": "0", "alt": "0", "tooltip": "%s", "class": "green"}' "$empty_tooltip"
 fi
-
-paru -Sy &
