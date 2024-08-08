@@ -13,6 +13,7 @@ bluez-tools
 stow
 ttf-jetbrains-mono-nerd
 ttf-firacode-nerd
+pacman-contrib
 )
 
 DEV_PACKAGES=(
