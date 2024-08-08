@@ -1,6 +1,6 @@
 {
   "custom/updates": {
-    "format": "   {}",
+    "format": "   {}",
     "escape": true,
     "return-type": "json",
     "exec": "sh ~/scripts/updates.sh",
@@ -34,10 +34,10 @@
     }
   },
   "clock": {
-    "interval": "29",
-    "format": "{:%H:%M}",
+    "interval": 1,
+    "format": "   {:L%H:%M:%S}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:L%Y-%m-%d %H:%M %a}",
+    "format-alt": "   {:L%H:%M   %a %Y-%m-%d }",
     "calendar": {
       "mode": "year",
       "mode-mon-col": 3,
@@ -74,21 +74,31 @@
   },
   "battery": {
     "states": {
+      "good": 95,
       "warning": 30,
       "critical": 15
     },
-    "format": "{capacity}% {icon}",
-    "format-full": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
-    "format-plugged": "{capacity}% ",
-    "format-alt": "{time} {icon}",
+    "format": "{icon} {capacity}%",
+    "format-full": "{icon} {capacity}%",
+    "format-charging": "  {capacity}%",
+    "format-plugged": "󱘖  {capacity}%",
+    "format-alt": "{icon} {time}",
     "format-icons": [
-      " ",
-      " ",
-      " ",
-      " ",
-      " "
-    ]
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ],
+    "format-time": "{H}h {M}min",
+    "tooltip": true,
+    "tooltip-format": "{timeTo} {power}w"
   },
   "power-profiles-daemon": {
     "format": "{icon}",
@@ -102,26 +112,34 @@
     }
   },
   "network": {
-    "format-wifi": "  {essid} ({signalStrength}%)",
-    "format-ethernet": "󰈀  {ipaddr}/{cidr}",
-    "format-linked": "{ifname} (No IP)",
-    "format-disconnected": "Network disconnected ⚠",
+    "interval": 1,
+    "format-wifi": "{icon}    {bandwidthUpBits}    {bandwidthDownBits}",
+    "format-ethernet": "󰈀     {bandwidthUpBits}    {bandwidthDownBits}",
+    "format-linked": "󰈁  {ifname} (No IP)",
+    "format-disconnected": "󰌙 ",
     "format-alt": "{ifname}: {ipaddr}/{cidr}",
     "tooltip-format": "{ifname} via {gwaddr}",
-    "tooltip-format-wifi": "  {ifname} @ {essid}\nAddress: {ipaddr}/{cidr}\nStrength: {signalStrength}%\nFrequency: {frequency}MHz\n󰕒 {bandwidthUpBits} 󰇚 {bandwidthDownBits}",
-    "tooltip-format-ethernet": "󰈀 {ifname}\nAddress: {ipaddr}/{cidr}\n󰕒 {bandwidthUpBits} 󰇚 {bandwidthDownBits}",
-    "on-click": "nm-connection-editor"
+    "tooltip-format-wifi": "  {ifname} @ {essid}\nAddress: {ipaddr}/{cidr}\nStrength: {signalStrength}%\nFrequency: {frequency}MHz",
+    "tooltip-format-ethernet": "󰈀 {ifname}\nAddress: {ipaddr}/{cidr}\n",
+    "on-click": "nm-connection-editor",
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ]
   },
   "pulseaudio": {
     "format": "{volume}% {icon} {format_source}",
     "format-bluetooth": "{volume}% {icon} 󰂯 {format_source}",
     "format-bluetooth-muted": "  {icon} 󰂯 {format_source}",
-    "format-muted": "  {format_source}",
+    "format-muted": "󰖁 {format_source}",
     "format-source": "{volume}% ",
     "format-source-muted": " ",
     "format-icons": {
       "headphone": "  ",
-      "hands-free": "  ",
+      "hands-free": "  ",
       "headset": "  ",
       "phone": "  ",
       "portable": "  ",
@@ -129,6 +147,7 @@
       "default": [
         "  ",
         "  ",
+        "󰕾 ",
         "  "
       ]
     },

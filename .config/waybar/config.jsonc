@@ -22,13 +22,13 @@
 		"hyprland/workspaces"
 	],
 	"modules-right": [
+		"network",
 		"custom/updates",
 		"hyprland/language",
 		"custom/cliphist",
 		"group/hardware",
 		"pulseaudio",
 		"bluetooth",
-		"network",
 		"power-profiles-daemon",
 		"keyboard-state",
 		"battery",
