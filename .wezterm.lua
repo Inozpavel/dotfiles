@@ -6,6 +6,7 @@ wezterm.add_to_config_reload_watch_list('/home/inozpavel/.cache/wal/wezterm-wal.
 local config = wezterm.config_builder()
 
 config.window_background_opacity = 0.9
+config.enable_wayland = true
 
 -- config.font = wezterm.font_with_fallback{
 -- 'JetBrainsMono',

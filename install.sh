@@ -84,6 +84,7 @@ RESULT_PACKAGES=()
 # Tweaks & extensions in system menu
 # Vitals
 
+#wallust
 USER_HOME=$(eval echo ~"${SUDO_USER}")
 
 main() {
