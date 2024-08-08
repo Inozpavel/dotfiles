@@ -66,6 +66,7 @@ bindkey '^p' history-search-forward      # ctrl + p
 bindkey '^n' history-search-backward     # ctrl + n
 bindkey '^[[1;3D' 'backward-word'        # left alt + left arrow
 bindkey '^[[1;3C' 'forward-word'         # right alt + right arrow
+bindkey '^Z' undo                        # undo
 
 WORDCHARS=${WORDCHARS//\/}
 
