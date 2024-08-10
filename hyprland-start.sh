@@ -1,7 +1,6 @@
 #!/bin/sh
 
 export _JAVA_AWT_WM_NOREPARENTING=1
-export XCURSOR_SIZE=24
 export LIBVA_DRIVER_NAME=nvidia
 export CLUTTER_BACKEND=wayland
 export XDG_SESSION_TYPE=wayland

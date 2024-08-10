@@ -6,7 +6,8 @@ threshold_green=0
 threshold_yellow=25
 threshold_red=100
 
-available_updates=$(paru -Qqu | wc -l)
+updates=$(checkupdates)
+available_updates=$(echo -n "$updates" | wc -l)
 
 css_class="green"
 
