@@ -16,6 +16,7 @@ ttf-firacode-nerd
 pacman-contrib
 network-manager
 network-manager-applet
+firefox
 )
 
 DEV_PACKAGES=(

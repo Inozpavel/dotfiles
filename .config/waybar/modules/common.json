@@ -118,21 +118,21 @@
   },
   "network": {
     "interval": 1,
-    "format-wifi": "{icon}    {bandwidthUpBits}    {bandwidthDownBits}",
-    "format-ethernet": "󰈀     {bandwidthUpBits}    {bandwidthDownBits}",
+    "format-wifi": "{icon} {ifname} {essid}",
+    "format-ethernet": "󰈀  {ipaddr}",
     "format-linked": "󰈁  {ifname} (No IP)",
     "format-disconnected": "󰌙 ",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}    {bandwidthUpBits}    {bandwidthDownBits}",
     "tooltip-format": "{ifname} via {gwaddr}",
-    "tooltip-format-wifi": "  {ifname} @ {essid}\nAddress: {ipaddr}/{cidr}\nStrength: {signalStrength}%\nFrequency: {frequency}MHz",
-    "tooltip-format-ethernet": "󰈀 {ifname}\nAddress: {ipaddr}/{cidr}\n",
-    "on-click": "nm-connection-editor",
+    "tooltip-format-wifi": "   {ifname} @ {essid}\nAddress: {ipaddr}/{cidr}\nStrength: {signalStrength}%\nFrequency: {frequency}MHz",
+    "tooltip-format-ethernet": "󰈀  {ifname}\nAddress: {ipaddr}/{cidr}\n",
+    "on-click-right": "nm-connection-editor",
     "format-icons": [
-      "󰤯",
-      "󰤟",
-      "󰤢",
-      "󰤥",
-      "󰤨"
+      "󰤯 ",
+      "󰤟 ",
+      "󰤢 ",
+      "󰤥 ",
+      "󰤨 "
     ]
   },
   "pulseaudio": {
