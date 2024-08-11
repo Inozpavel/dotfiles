@@ -33,6 +33,7 @@
 		"keyboard-state",
 		"battery",
 		"clock",
+		"tray",
 		"group/tools"
 	]
 }

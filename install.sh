@@ -14,6 +14,8 @@ stow
 ttf-jetbrains-mono-nerd
 ttf-firacode-nerd
 pacman-contrib
+network-manager
+network-manager-applet
 )
 
 DEV_PACKAGES=(

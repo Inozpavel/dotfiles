@@ -4,7 +4,8 @@
     "escape": true,
     "return-type": "json",
     "exec": "sh ~/scripts/updates.sh",
-    "restart-interval": 60,
+    "restart-interval": 10,
+    "interval": 60,
     "on-click": "$(cat ~/dotfiles/.settings/terminal.sh) --class dotfiles-floating -e ~/dotfiles/scripts/installupdates.sh",
     "on-click-right": "~/dotfiles/.settings/software.sh"
   },
@@ -99,6 +100,10 @@
     "format-time": "{H}h {M}min",
     "tooltip": true,
     "tooltip-format": "{timeTo} {power}w"
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10
   },
   "power-profiles-daemon": {
     "format": "{icon}",
