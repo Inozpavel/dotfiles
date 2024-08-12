@@ -17,6 +17,7 @@ pacman-contrib
 network-manager
 network-manager-applet
 firefox
+pavucontrol
 )
 
 DEV_PACKAGES=(
@@ -41,17 +42,18 @@ HYPRLAND_PACKAGES=(
 hyprland                         # https://github.com/hyprwm/Hyprland
 # hyprpaper                        # https://github.com/hyprwm/hyprpaper
 hyprlock                         # https://github.com/hyprwm/hyprlock
-wofi
+# wofi
+rofi-wayland
 nautilus
 mako
 python-pywall                    # https://github.com/dylanaraps/pywal
-pavucontrol
 blueman
 grim
 slurp                            # https://github.com/emersion/slurp
 pinta
 xdg-desktop-portal-hyprland
 swww                             # https://github.com/LGFae/swww
+imagemagick
 )
 
 AUR_PACKAGES=(

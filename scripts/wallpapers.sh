@@ -1,6 +1,10 @@
 #!/usr/bin/bash
 
+wallpaper_folder="$HOME/.config/wallpapers"
 rasi_file="$HOME/.config/rofi/current_wallpaper.rasi"
+cache_dir="$HOME/.config/cache"
+current_wallpaper="$cache_dir/current_wallpaper.png"
+blurred_wallpaper="$cache_dir/blurred_wallpaper.png"
 
 main() {
   if [[ $# -eq 1 ]]; then
@@ -12,6 +16,17 @@ main() {
   #  wallpaper=~/.config/wallpapers/explorer_orange_sunset.jpg
   #  wallpaper=~/.config/wallpapers/sundown-over-water.jpg
   fi
+
+  if [ ! -f "$current_wallpaper" ] ;then
+      echo "$wallpaper_folder/default.jpg" > "current_wallpaper"
+  fi
+
+  if [ ! -d  "$cache_dir" ]; then
+    mkdir "$cache_dir"
+  fi
+  magick "$wallpaper" -resize 50% "$blurred_wallpaper"
+  echo ":: Resized to 50%"
+  magick "$blurred_wallpaper" -blur 50x30 "$blurred_wallpaper"
 
   if ! [[ -f "$wallpaper" ]]; then
     echo "Wallpaper with path $wallpaper wasn't found"
@@ -44,6 +59,5 @@ restart_hyprpaper(){
   pkill hyprpaper
   hyprpaper &
 }
-
 
 main "$@" || exit 1

@@ -1,102 +1,81 @@
-/* -----------------------------------------------------
- * Import Pywal colors
- * ----------------------------------------------------- */
 @import '../../.cache/wal/colors-waybar.css';
 
-@define-color bar-bg rgba(0, 0, 0, 0);
-
-@define-color main-bg #11111b;
-@define-color main-fg #cdd6f4;
-
-@define-color wb-act-bg #a6adc8;
-@define-color wb-act-fg #313244;
-
-@define-color wb-hvr-bg #f5c2e7;
-@define-color wb-hvr-fg #313244;
-
-/* -----------------------------------------------------
- * General 
- * ----------------------------------------------------- */
-
 * {
-    font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     background-image: none;
-    transition: 20ms;
-    box-shadow: none;
 }
 
 window {
-    background-color: transparent;
+    font-family: Fira Code Medium, serif;
+    font-size: 16pt;
+    color: @foreground; /* text */
+    background-color: rgba(24, 27, 32, 0.2);
+    background-image: url("../cache/blurred_wallpaper.png");
+    background-size: cover;
 }
 
 button {
-    color: @foreground;
-    background-color: @color10;
-    outline-style: none;
-    border: none;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 10%;
-    border-radius: 60px;
-    box-shadow: none;
-    text-shadow: none;
+    background-size: 30%;
+    background-color: @background;
     animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s ease-in;
+    box-shadow: 0 0 10px 2px transparent;
+    border-radius: 36px;
+    margin: 10px;
 }
 
 button:focus {
-    /*background-color: transparent;*/
+    box-shadow: none;
     background-size: 20%;
+    border: solid 5px @color12;
 }
 
 button:hover {
-    background-color: @color8;
-
-    background-size: 25%;
-    border-radius: 15px;
-    animation: gradient_f 20s ease-in infinite;
-    transition: all 0.3s cubic-bezier(.55,0.0,.28,1.682);
-}
-
-button:hover#lock {
-    border-radius: 15px 15px 0px 15px;
-    margin : 0px 0px 0px 0px;
-}
-
-button:hover#logout {
-    border-radius: 15px 0px 15px 15px;
-    margin : 0px 0px 0px 0px;
-}
-
-button:hover#shutdown {
-    border-radius: 15px 15px 15px 0px;
-    margin : 0px 0px 0px 0px;
-}
-
-button:hover#reboot {
-    border-radius: 0px 15px 15px 15px;
-    margin : 0px 0px 0px 0px;
-}
-
-#lock {
-    background-image: image(url("icons/lock.png"));
-    border-radius: 15px 0px 0px 0px;
-    margin : 0px 0px 0px 0px;
-}
-
-#logout {
-    background-image: image(url("icons/logout.png"));
-    border-radius: 0px 0px 0px 15px;
-    margin : 0px 0px 0px 0px;
+    background-size: 50%;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, .4);
+    background-color: @color6;
+    color: transparent;
+    transition: all 0.2s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
 }
 
 #shutdown {
-    background-image: image(url("icons/shutdown.png"));
-    border-radius: 0px 15px 0px 0px;
-    margin : 0px 0px 0px 0px;
+    background-image: image(url("./icons/power.png"));
+}
+
+#shutdown:hover {
+    background-image: image(url("./icons/power-hover.png"));
+}
+
+#logout {
+    background-image: image(url("./icons/logout.png"));
+
+}
+
+#logout:hover {
+    background-image: image(url("./icons/logout-hover.png"));
 }
 
 #reboot {
-    background-image: image(url("icons/reboot.png"));
-    border-radius: 0px 0px 15px 0px;
-    margin : 0px 0px 0px 0px;
+    background-image: image(url("./icons/restart.png"));
+}
+
+#reboot:hover {
+    background-image: image(url("./icons/restart-hover.png"));
+}
+
+#lock {
+    background-image: image(url("./icons/lock.png"));
+}
+
+#lock:hover {
+    background-image: image(url("./icons/lock-hover.png"));
+}
+
+#hibernate {
+    background-image: image(url("./icons/hibernate.png"));
+}
+
+#hibernate:hover {
+    background-image: image(url("./icons/hibernate-hover.png"));
 }
