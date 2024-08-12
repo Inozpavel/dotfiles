@@ -45,7 +45,8 @@ hyprlock                         # https://github.com/hyprwm/hyprlock
 # wofi
 rofi-wayland
 nautilus
-mako
+#mako
+swaync
 python-pywall                    # https://github.com/dylanaraps/pywal
 blueman
 grim

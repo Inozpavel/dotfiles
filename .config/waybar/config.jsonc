@@ -1,39 +1,40 @@
 // -*- mode: jsonc -*-
 {
-	"layer": "top",
-	"margin-top": 0,
-	"margin-bottom": 0,
-	"margin-left": 0,
-	"margin-right": 0,
-	"spacing": 4,
-	"reload_style_on_change": true,
-	"include": [
-		"~/.config/waybar/modules/hardware.json",
-		"~/.config/waybar/modules/common.json",
-		"~/.config/waybar/modules/tools.json",
-		"~/.config/waybar/modules/hyprland.json"
-	],
-	"modules-left": [
-		"wlr/taskbar",
-		"hyprland/window",
-		"custom/wallpaper"
-	],
-	"modules-center": [
-		"hyprland/workspaces"
-	],
-	"modules-right": [
-		"network",
-		"custom/updates",
-		"hyprland/language",
-		"custom/cliphist",
-		"group/hardware",
-		"pulseaudio",
-		"bluetooth",
-		"power-profiles-daemon",
-		"keyboard-state",
-		"battery",
-		"clock",
-		"tray",
-		"group/tools"
-	]
+  "layer": "top",
+  "margin-top": 0,
+  "margin-bottom": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+  "spacing": 4,
+  "reload_style_on_change": true,
+  "include": [
+    "~/.config/waybar/modules/hardware.json",
+    "~/.config/waybar/modules/common.json",
+    "~/.config/waybar/modules/tools.json",
+    "~/.config/waybar/modules/hyprland.json"
+  ],
+  "modules-left": [
+    "wlr/taskbar",
+    "hyprland/window",
+    "custom/wallpaper"
+  ],
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+  "modules-right": [
+    "custom/updates",
+    "hyprland/language",
+    "network",
+    "custom/cliphist",
+    "group/hardware",
+    "pulseaudio",
+    "bluetooth",
+    "power-profiles-daemon",
+    "custom/notification",
+    "keyboard-state",
+    "battery",
+    "clock",
+    "tray",
+    "group/tools"
+  ]
 }
