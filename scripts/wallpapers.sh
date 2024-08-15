@@ -18,7 +18,7 @@ main() {
   fi
 
   if [ ! -f "$current_wallpaper" ] ;then
-      echo "$wallpaper_folder/default.jpg" > "current_wallpaper"
+      echo "$wallpaper_folder/default.jpg" > "$current_wallpaper"
   fi
 
   if [ ! -d  "$cache_dir" ]; then
