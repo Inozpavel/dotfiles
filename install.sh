@@ -7,7 +7,8 @@ curl
 wget
 git
 neofetch
-wezterm
+# wezterm
+foot
 bluez
 bluez-tools
 stow
@@ -16,8 +17,10 @@ ttf-firacode-nerd
 pacman-contrib
 network-manager
 network-manager-applet
+network-manager-openvpn
 firefox
 pavucontrol
+intel-ucode
 )
 
 DEV_PACKAGES=(
@@ -30,6 +33,10 @@ fzf
 zoxide       # https://github.com/ajeetdsouza/zoxide
 zed
 base-devel
+docker
+docker-compose
+inetutils
+neovim
 )
 
 NVIDIA_PACKAGES=(
@@ -42,6 +49,7 @@ HYPRLAND_PACKAGES=(
 hyprland                         # https://github.com/hyprwm/Hyprland
 # hyprpaper                        # https://github.com/hyprwm/hyprpaper
 hyprlock                         # https://github.com/hyprwm/hyprlock
+hypridle
 # wofi
 rofi-wayland
 nautilus
@@ -55,6 +63,7 @@ pinta
 xdg-desktop-portal-hyprland
 swww                             # https://github.com/LGFae/swww
 imagemagick
+cliphist
 )
 
 AUR_PACKAGES=(
