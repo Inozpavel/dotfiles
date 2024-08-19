@@ -12,7 +12,10 @@
 			"active": "",
 			"default": ""
 		},
-		"sort-by-numer": true
+		"sort-by-numer": true,
+		"persistent-workspaces": {
+			"*": 3
+		}
 	},
 	"hyprland/window": {
 		"rewrite": {
