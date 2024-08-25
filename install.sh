@@ -66,6 +66,7 @@ swww                             # https://github.com/LGFae/swww
 imagemagick
 cliphist
 polkit-kde-agent
+webcord
 )
 
 AUR_PACKAGES=(
