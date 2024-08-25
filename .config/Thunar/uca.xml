@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Открыть терминал</name>
+	<submenu></submenu>
+	<unique-id>1721031960260268-1</unique-id>
+	<command>foot</command>
+	<description>Описание</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+</actions>
