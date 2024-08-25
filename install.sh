@@ -52,8 +52,9 @@ hyprlock                         # https://github.com/hyprwm/hyprlock
 hypridle
 # wofi
 rofi-wayland
-nautilus
-#mako
+# nautilus
+thunar
+# mako
 swaync
 python-pywall                    # https://github.com/dylanaraps/pywal
 blueman
@@ -64,6 +65,7 @@ xdg-desktop-portal-hyprland
 swww                             # https://github.com/LGFae/swww
 imagemagick
 cliphist
+polkit-kde-agent
 )
 
 AUR_PACKAGES=(
