@@ -48,7 +48,7 @@ NVIDIA_PACKAGES=(
 HYPRLAND_PACKAGES=(
 hyprland                         # https://github.com/hyprwm/Hyprland
 # hyprpaper                        # https://github.com/hyprwm/hyprpaper
-hyprlock                         # https://github.com/hyprwm/hyprlock
+# hyprlock                         # https://github.com/hyprwm/hyprlock
 hypridle
 # wofi
 rofi-wayland
@@ -73,6 +73,7 @@ AUR_PACKAGES=(
 mission-center                   # https://gitlab.com/mission-center-devs/mission-center
 waypaper                         # https://github.com/anufrievroman/waypaper
 wlogout                          # https://github.com/ArtsyMacaw/wlogout
+swaylock-effects                 # https://github.com/mortie/swaylock-effects
 )
 
 RESULT_PACKAGES=()

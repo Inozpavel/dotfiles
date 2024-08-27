@@ -17,9 +17,7 @@ main() {
   #  wallpaper=~/.config/wallpapers/sundown-over-water.jpg
   fi
 
-  if [ ! -f "$current_wallpaper" ] ;then
-      echo "$wallpaper_folder/default.jpg" > "$current_wallpaper"
-  fi
+  cp "$wallpaper" "$current_wallpaper"
 
   if [ ! -d  "$cache_dir" ]; then
     mkdir "$cache_dir"

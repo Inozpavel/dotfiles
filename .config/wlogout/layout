@@ -1,6 +1,6 @@
 {
     "label" : "lock",
-    "action" : "hyprlock",
+    "action" : "swaylock",
     "text" : "Заблокировать",
     "keybind" : "l"
 }
@@ -14,7 +14,7 @@
 
 {
     "label" : "hibernate",
-    "action" : "hyprlock && systemctl suspend",
+    "action" : "systemctl suspend && hyprlock",
     "text" : "Гибернация",
     "keybind" : "h"
 }
