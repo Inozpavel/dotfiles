@@ -17,4 +17,18 @@
 	<text-files/>
 	<video-files/>
 </action>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Открыть в RustRover</name>
+	<submenu></submenu>
+	<unique-id>1725096408328256-1</unique-id>
+	<command>/opt/RustRover/bin/rustrover %f</command>
+	<description></description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<directories/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+</action>
 </actions>
