@@ -194,6 +194,10 @@ install_rust() {
 install_aur_via_paru() {
   echo "Installing paru.."
 
+  if [ ! check_command_exists paru && -d ./paru ]; then
+    sudo rm -r ./paru
+  fi;
+
   git clone https://aur.archlinux.org/paru.git
   sh -c "cd paru && makepkg -si"
 
