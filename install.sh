@@ -122,6 +122,8 @@ main() {
   echo && install_rust
   echo && link_configs
 
+  enable_daemons
+
   echo "Installation success"
 }
 
