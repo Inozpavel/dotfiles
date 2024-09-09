@@ -14,5 +14,8 @@ export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME"=wayland"
 export GDK_BACKEND=wayland
 export AQ_DRM_DEVICES=/dev/dri/card0:/dev/dri/card1
+export GTK_THEME=Adwaita:dark
+export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+export QT_STYLE_OVERRIDE=Adwaita-Dark
 
 exec Hyprland

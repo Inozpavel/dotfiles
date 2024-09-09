@@ -80,6 +80,9 @@ waypaper                         # https://github.com/anufrievroman/waypaper
 wlogout                          # https://github.com/ArtsyMacaw/wlogout
 swaylock-effects                 # https://github.com/mortie/swaylock-effects
 webcord
+gnome-themes-extra
+adwaita-qt5-git
+adwaita-qt6-git
 )
 
 RESULT_PACKAGES=()
