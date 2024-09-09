@@ -15,12 +15,14 @@ stow
 ttf-jetbrains-mono-nerd
 ttf-firacode-nerd
 pacman-contrib
-network-manager
+networkmanager
 network-manager-applet
-network-manager-openvpn
+networkmanager-openvpn
 firefox
 pavucontrol
 intel-ucode
+starship
+telegram-desktop
 )
 
 DEV_PACKAGES=(
@@ -56,7 +58,7 @@ rofi-wayland
 thunar
 # mako
 swaync
-python-pywall                    # https://github.com/dylanaraps/pywal
+python-pywal                    # https://github.com/dylanaraps/pywal
 blueman
 grim
 slurp                            # https://github.com/emersion/slurp
@@ -66,7 +68,10 @@ swww                             # https://github.com/LGFae/swww
 imagemagick
 cliphist
 polkit-kde-agent
-webcord
+brightnessctl
+#playerctl
+pipewire-pulse
+wireplumber
 )
 
 AUR_PACKAGES=(
@@ -74,6 +79,7 @@ mission-center                   # https://gitlab.com/mission-center-devs/missio
 waypaper                         # https://github.com/anufrievroman/waypaper
 wlogout                          # https://github.com/ArtsyMacaw/wlogout
 swaylock-effects                 # https://github.com/mortie/swaylock-effects
+webcord
 )
 
 RESULT_PACKAGES=()
@@ -133,7 +139,7 @@ process_packages() {
 
     # shellcheck disable=SC2034
     RESULT_PACKAGES=($(extend_packages RESULT_PACKAGES NVIDIA_PACKAGES))
-    echo "Add to mkinitpcio: MODULES=( nvidia nvidia_modeset nvidia_uvm nvidia_drm ) and run 'sudo mkinitpcio -P'"
+    echo "Add to mkinitpcio: MODULES=( nvidia nvidia_modeset nvidia_uvm nvidia_drm ) and run 'sudo mkinitcpio -P'"
   else
     echo "NVIDIA device wasn't found. Skipping packages"
   fi
@@ -205,5 +211,8 @@ check_command_exists() {
   command -v "$1" >/dev/null
 }
 
-main "$@" || exit 1
+enable_daemons() {
+	sudo systemctl --user enable --now pipewire-pulse.service
+}
 
+main "$@" || exit 1

@@ -13,6 +13,6 @@ export WLR_BACKEND=vulkan
 export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME"=wayland"
 export GDK_BACKEND=wayland
-#export WLR_DRM_DEVICES=/dev/dri/card1
+export AQ_DRM_DEVICES=/dev/dri/card0:/dev/dri/card1
 
 exec Hyprland
