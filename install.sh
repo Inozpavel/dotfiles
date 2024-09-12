@@ -37,6 +37,7 @@ zed
 base-devel
 docker
 docker-compose
+docker-buildx
 inetutils
 neovim
 )
