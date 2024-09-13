@@ -131,7 +131,6 @@ main() {
   echo "Installation success"
 }
 
-#sudo flatpak override --socket=wayland ru.yandex.Browser
 process_packages() {
   RESULT_PACKAGES=($(extend_packages RESULT_PACKAGES PACKAGES))
   RESULT_PACKAGES=($(extend_packages RESULT_PACKAGES DEV_PACKAGES))
@@ -225,4 +224,6 @@ enable_daemons() {
 	sudo systemctl --user enable --now pipewire-pulse.service
 }
 
+#"Boot with minimal options"   "ro root=/dev/nvme0n1p2 nvidia_drm.modeset=1 nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+#sudo flatpak override --socket=wayland ru.yandex.Browser
 main "$@" || exit 1
