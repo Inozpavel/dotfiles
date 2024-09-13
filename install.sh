@@ -222,6 +222,9 @@ check_command_exists() {
 
 enable_daemons() {
 	sudo systemctl --user enable --now pipewire-pulse.service
+	sudo systemctl enable nvidia-hibernate.service
+	sudo systemctl enable nvidia-resume.service
+	sudo systemctl enable nvidia-suspend.service
 }
 
 #"Boot with minimal options"   "ro root=/dev/nvme0n1p2 nvidia_drm.modeset=1 nvidia.NVreg_PreserveVideoMemoryAllocations=1"
