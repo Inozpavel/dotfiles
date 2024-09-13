@@ -113,7 +113,7 @@ zpm-zsh/clipboard                  # https://github.com/zpm-zsh/clipboard
 )
 
 
-# install_zinit_if_missing()
+install_zinit_if_missing
 
 source "${ZINIT_HOME}/zinit.zsh"
 
@@ -161,7 +161,7 @@ unalias zi
 # export **<TAB>
 # unalias **<TAB>
 # export FZF_COMPLETION_TRIGGER='~~'
-export FZF_DEFAULT_OPTS='--preview "if [[ -d {} ]]; then lsd --color=always {} 2>/dev/null; fi; if [[ -f {} ]]; then bat --style=numbers --color=always --line-range :500 {}; fi"'
+# export FZF_DEFAULT_OPTS='--preview "if [[ -d {} ]]; then lsd --color=always {} 2>/dev/null; fi; if [[ -f {} ]]; then bat --style=numbers --color=always --line-range :500 {}; fi"'
 has_nvidia_loaded_module=$(get_exit_code 'lsmod | grep -q nvidia_')
 
 if [[ has_nvidia_loaded_module -eq 0 ]]; then
